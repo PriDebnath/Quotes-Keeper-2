@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllQuoteListComponent } from './view/all-quote-list/all-quote-list.component';
+import { MyQuoteListComponent } from './view/my-quote-list/my-quote-list.component';
+import { MyProfileComponent } from './view/my-profile/my-profile.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./view/auth/auth.module').then((m) => m.AuthModule),
+  },
+  { path: 'all-quote-list', component: AllQuoteListComponent },
+  { path: 'my-quote-list', component: MyQuoteListComponent },
+  { path: 'my-profile', component: MyProfileComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
