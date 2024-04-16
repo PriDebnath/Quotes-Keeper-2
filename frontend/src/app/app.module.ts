@@ -6,19 +6,22 @@ import { AppComponent } from './app.component';
 import { AllQuoteListComponent } from './view/all-quote-list/all-quote-list.component';
 import { MyQuoteListComponent } from './view/my-quote-list/my-quote-list.component';
 import { MyProfileComponent } from './view/my-profile/my-profile.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AllQuoteListComponent,
+    MyProfileComponent,
     MyQuoteListComponent,
-    MyProfileComponent
+    AllQuoteListComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
