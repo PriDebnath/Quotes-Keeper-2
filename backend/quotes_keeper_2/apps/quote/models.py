@@ -18,7 +18,10 @@ class Quote(models.Model):
         null = True
   )
   def __str__(self):
-    return self.text
+    if len(self.text) > 40:
+        return self.text[:40] + "..."
+    else:
+        return self.text
     
 class QuoteCategory(models.Model):
   quote = models.ForeignKey(Quote, on_delete = models.CASCADE)
