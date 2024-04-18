@@ -5,12 +5,15 @@ import { AppComponent } from './app.component';
 import { AllQuoteListComponent } from 'src/app/view/all-quote-list/all-quote-list.component';
 import { MyQuoteListComponent } from 'src/app/view/my-quote-list/my-quote-list.component';
 import { MyProfileComponent } from 'src/app/view/my-profile/my-profile.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from 'src/app/shared/view/header/header.component';
 import { QuoteCardComponent } from 'src/app/shared/view/quote-card/quote-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuoteFormModalComponent } from 'src/app/view/quote-form-modal/quote-form-modal.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from 'src/app/view/auth/auth.module';
+import { JwtTokenInterceptor } from "src/app/view/auth/interceptors/jwt-token.interceptor"
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+ 
  
 @NgModule({
   declarations: [
@@ -25,11 +28,16 @@ import { QuoteFormModalComponent } from 'src/app/view/quote-form-modal/quote-for
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA] ,
   imports: [
     NgbModule,
+    AuthModule,
+    FormsModule,
     BrowserModule,
     HttpClientModule,
+    HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true } // Register your interceptor
   ],
   bootstrap: [AppComponent]
 })

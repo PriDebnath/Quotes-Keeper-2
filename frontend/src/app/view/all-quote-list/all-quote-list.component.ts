@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuoteService } from 'src/app/core/services/quote/quote.service';
 import { Title } from '@angular/platform-browser';
+import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-all-quote-list',
@@ -8,13 +10,25 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./all-quote-list.component.css'],
 })
 export class AllQuoteListComponent implements OnInit {
+  jwtHelper: JwtHelperService = new JwtHelperService()
   appTitle = 'All Quotes';
   quotes: any = []
-  constructor(private title: Title, private quoteService: QuoteService) {}
+  user_id: number = 0
+  
+
+  constructor(
+    private title: Title,
+    private quoteService: QuoteService,
+    private localStorageService: LocalStorageService,
+    ) {}
 
   ngOnInit(): void {
+    let token = this.localStorageService.getParsedValue("token")
+    let accessToken = this.jwtHelper.decodeToken(token.access)
+    this.user_id = accessToken.user_id
+    //
     this.title.setTitle(this.appTitle);
-
+    //
     this.getAllQuoteList();
   }
 

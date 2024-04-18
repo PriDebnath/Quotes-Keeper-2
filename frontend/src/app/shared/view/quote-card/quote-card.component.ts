@@ -7,4 +7,5 @@ import { Component,Input } from '@angular/core';
 })
 export class QuoteCardComponent {
 @Input() quote: any = {}
+@Input() myQuote: boolean = false
 }

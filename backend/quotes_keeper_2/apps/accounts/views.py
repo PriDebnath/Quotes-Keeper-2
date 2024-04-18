@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,BasePermission
 from rest_framework.viewsets import ModelViewSet
 from quotes_keeper_2.apps.accounts import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
