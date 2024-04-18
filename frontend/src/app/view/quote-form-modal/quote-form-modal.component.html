@@ -1,0 +1,27 @@
+ 
+ 
+<div class="modal-header d-flex align-items-center justify-content-between    ">
+    <h5 class="" >{{ 'Add Quote'}}</h5>
+    <button class="btn  btn-danger" type="button"   data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+ 
+ 
+    <form [formGroup]="quoteForm">
+    <div class="m-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Quote Content</label>
+      <textarea formControlName="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+      
+      
+<div class="d-grid gap-2 m-3">
+  <button type="button" class="btn btn-outline-danger">Cancel</button>
+  <button type="button" class="btn btn-success" (click)="onQuoteFormSubmit()">
+    Save
+  </button>
+</div>
+      
+    </form>
+    
+    {{ quoteForm.value | json }}

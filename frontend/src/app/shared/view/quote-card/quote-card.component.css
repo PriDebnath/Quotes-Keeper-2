@@ -1,0 +1,31 @@
+
+
+.quote-card{
+  background: #90e0e5;
+  padding: 0.3rem 0.8rem;
+  margin: 0.5rem 0rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid #00b4b8;
+  /*
+  box-shadow: inset 2px 2px 4px  rgba(200,140,250,0.3);
+*/
+  
+}
+
+.user-detail{
+  display: block;
+  text-align: right
+}
+
+.category-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category{
+  padding: 0.2rem 0.7rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  background:  #00b4b8;
+  margin-right: 0.1rem;
+}

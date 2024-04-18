@@ -1,0 +1,30 @@
+
+ul{
+  display: flex;
+  background: #90e0e5;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  padding: 0.6rem 2rem;
+  display: block;
+  text-decoration: none;
+  color: black;
+   border: 0.2rem solid transparent;
+}
+
+.active-link{
+ /*
+  background: #90e0e5;
+   border-bottom: 0.2rem solid #90e0e5;
+   */
+   font-weight: 700;
+   color:  #00b4b8;
+   border: 0.2rem solid transparent;
+   border-bottom: 0.2rem solid #00b4b8;
+ }

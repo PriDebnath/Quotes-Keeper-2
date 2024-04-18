@@ -1,0 +1,15 @@
+
+<div class="quote-card" >
+  <p> '' {{ quote.text || "No Text" }} ,, </p>
+  
+  <small class="user-detail">
+    -   {{ quote.user?.first_name}}
+    {{ quote.user?.last_name}}
+  </small>
+  <div class="category-container" >
+  <div class="category" *ngFor="let category of quote.categories">
+    {{ category?.category?.name }}
+  </div>
+    
+  </div>
+</div>

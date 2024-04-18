@@ -14,4 +14,7 @@ export class QuoteService {
     return this.http.get<any>(`${this.API_URL}quotes/`);
   }
 
+  createQuote(data: any){
+    return this.http.post<any>(`${this.API_URL}quotes/`, data);
+  }
 }
