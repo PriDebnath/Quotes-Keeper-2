@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-*{
-  box-sizing: border-box;
-  transition: 0.2s;
-}
 
+
+ 
 body{
   margin: 0;
   padding: 0;
@@ -39,4 +37,15 @@ body{
   transform: rotate(225deg);
   background: rgba(255, 0, 0, 1);
 
+}
+
+
+/* commom style*/
+
+.color-00b4b8{
+  color: #00b4b8 !important;
+}
+
+.background-00b4b8{
+  background: #00b4b8 !important;
 }
