@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AllQuoteListComponent implements OnInit {
   appTitle = 'All Quotes';
-
+  quotes: any = []
   constructor(private title: Title, private quoteService: QuoteService) {}
 
   ngOnInit(): void {
@@ -21,6 +21,7 @@ export class AllQuoteListComponent implements OnInit {
   getAllQuoteList() {
     this.quoteService.getAllQuoteList().subscribe({
       next: (res: any) => {
+        this.quotes = res.results
         console.log({ res });
         // alert(res.toString());
       },

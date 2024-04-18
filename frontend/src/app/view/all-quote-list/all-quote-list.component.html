@@ -1,1 +1,7 @@
-<p>all-quote-list works!</p>
+
+ <div *ngIf="quotes.length" class="quote-container">
+   <div *ngFor="let quote of quotes" class="" >
+     <app-quote-card  [quote]="quote">
+     </app-quote-card>
+   </div>
+ </div>
