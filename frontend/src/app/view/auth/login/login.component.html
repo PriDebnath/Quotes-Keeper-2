@@ -1,6 +1,7 @@
 <!-- login.component.html -->
 <div class="form-container" >
-  
+  <h2 class="text-center" > Login </h2>
+   
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="username">Username</label>
@@ -11,8 +12,8 @@
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" formControlName="password">
   </div>
-  
   <button type="submit" class="mt-3 btn btn-primary  background-00b4b8">Login</button>
-</form>
+ 
+  </form>
 </div>
 

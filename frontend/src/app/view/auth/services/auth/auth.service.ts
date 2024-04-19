@@ -15,6 +15,10 @@ export class AuthService {
   login(data: any) {
     return this.http.post<any>(this.API_URL + 'accounts/auth/login/', data);
   }
+  
+  register(data: any) {
+    return this.http.post<any>(this.API_URL + 'accounts/registration/', data);
+  }
 
   refreshToken(token: string) {
     return this.http.post<any>(this.API_URL + 'auth/refresh/', { token });

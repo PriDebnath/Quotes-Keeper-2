@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class MyProfileComponent {
 
+constructor(
+  private router: Router
+){}
+
+goToLoginPage(){this.router.navigateByUrl('/auth/login')}
+goToRegistrationPage(){this.router.navigateByUrl('/auth/registration')}
 }

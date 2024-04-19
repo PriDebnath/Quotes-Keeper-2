@@ -4,6 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MyProfileComponent } from 'src/app/view/my-profile/my-profile.component';
 import { QuoteFormModalComponent } from 'src/app/view/quote-form-modal/quote-form-modal.component';
+import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Component({
@@ -12,22 +14,30 @@ import { QuoteFormModalComponent } from 'src/app/view/quote-form-modal/quote-for
   styleUrls: ['./my-quote-list.component.css']
 })
 export class MyQuoteListComponent  implements OnInit{
+  jwtHelper: JwtHelperService = new JwtHelperService()
   appTitle = 'My Quotes';
   isAddEdit = false
   quotes: any = []
+  user_id: number = 0
+  
   constructor(
     private title: Title,
     private ngbModal: NgbModal,
     private quoteService: QuoteService,
+    private localStorageService: LocalStorageService,
     ) {}
 
   ngOnInit(): void {
-    this.title.setTitle(this.appTitle);
+    let token = this.localStorageService.getParsedValue("token")
+    let accessToken = this.jwtHelper.decodeToken(token.access)
+    this.user_id = accessToken.user_id
+    //
     this.getAllQuoteList();
+    this.title.setTitle(this.appTitle);
   }
 
   getAllQuoteList() {
-    this.quoteService.getAllQuoteList().subscribe({
+    this.quoteService.getAllQuoteList({user: this.user_id}).subscribe({
       next: (res: any) => {
         console.log({ res });
         this.quotes = res.results
