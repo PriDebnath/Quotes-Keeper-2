@@ -1,19 +1,16 @@
-// login.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from "src/app/view/auth/services/auth/auth.service"
 import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
 })
-export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+export class RegistrationComponent implements OnInit{
+registrationForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -23,39 +20,40 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.registrationForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
+    if (this.registrationForm.valid) {
       // Handle login logic
-      this.onLogin()
-      console.log(this.loginForm.value);
+     this.register()
+      console.log(this.registrationForm.value);
     } else {
       // Display validation errors
       console.log('Form is invalid');
     }
   }
   
-onLogin() {
-    this.authService.login(this.loginForm.value)
+register() {
+    this.authService.register(this.registrationForm.value)
       .subscribe(
         response => {
           // Handle successful login response
-          console.log('Login successful', response)
+          console.log('Registration successful', response)
           alert (JSON.stringify(response))
-          this.localStorageService.saveKeyValue("token",response) // save token in local storage
-          this.router.navigateByUrl('/')
+          //this.localStorageService.saveKeyValue("token",response) // save token in local storage
+          this.router.navigateByUrl('/auth/login')
            
           
         },
         error => {
           alert (JSON.stringify(error))
           // Handle login error
-          console.error('Login error', error);
+          console.error('RegistrationForm error', error);
         }
       );
   }
@@ -63,4 +61,5 @@ onLogin() {
 goToLoginPage(){this.router.navigateByUrl('/auth/login')}
   goToRegistrationPage(){this.router.navigateByUrl('/auth/registration')}
 
+  
 }

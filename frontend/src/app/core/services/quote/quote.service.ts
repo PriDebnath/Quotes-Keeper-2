@@ -10,8 +10,12 @@ export class QuoteService {
   constructor(private http: HttpClient) {}
 
   
-  getAllQuoteList(){
-    return this.http.get<any>(`${this.API_URL}quotes/`);
+  getAllQuoteList(data?:{user?: any}){
+    let params = new HttpParams();
+    if(data?.user){
+      params = params.append('user', data?.user);
+    }
+    return this.http.get<any>(`${this.API_URL}quotes/`,{ params });
   }
 
   createQuote(data: any){
