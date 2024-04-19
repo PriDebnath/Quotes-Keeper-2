@@ -59,4 +59,8 @@ onLogin() {
         }
       );
   }
+  
+goToLoginPage(){this.router.navigateByUrl('/auth/login')}
+  goToRegistrationPage(){this.router.navigateByUrl('/auth/registration')}
+
 }

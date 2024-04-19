@@ -23,4 +23,10 @@ export class AuthService {
   refreshToken(token: string) {
     return this.http.post<any>(this.API_URL + 'auth/refresh/', { token });
   }
+  
+  getUser(data?: {user_id?: number}) {
+    return this.http.get<any>(this.API_URL + 'accounts/users/' + data?.user_id! + '/');
+  }
+  
+  
 }

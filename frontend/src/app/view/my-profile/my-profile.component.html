@@ -1,6 +1,23 @@
 
 
 <div class="d-flex align-items-center justify-content-center m-3">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{ user?.first_name }}
+    {{ user?.last_name }} -
+    {{ user?.email }}
+  </div>
+  <!--
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  -->
+</div>
+</div>
+
+<div class="d-flex align-items-center justify-content-center m-3">
   
 <div class="btn-group" role="group" aria-label="Basic example">
   <button (click)="goToLoginPage()" type="button" class="btn btn-primary">Go To Login Page</button>
