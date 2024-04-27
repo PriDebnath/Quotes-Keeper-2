@@ -4,8 +4,8 @@
   base = "frontend"
 
   # Command to build your Angular app
-  command = "npm run build:prod"
- # command = "npm install --legacy-peer-deps && ng build "
+  command = "npm install --legacy-peer-deps && npm run build:prod"
+ 
 
   # Publish directory for Netlify
   publish = "dist/quotes_keeper_2"
