@@ -173,3 +173,5 @@ SIMPLE_JWT = {
 #     "https://localhost.com",
 #     "https://sub.example.com",
 # ]
+
+

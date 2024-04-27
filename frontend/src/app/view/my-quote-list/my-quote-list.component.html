@@ -1,13 +1,31 @@
 
 
-<div *ngIf="quotes.length" class="quote-container">
+<div *ngIf="user_id;else notLoggedin" >
+<div *ngIf="quotes.length;else noQuote" class="quote-container">
    <div *ngFor="let quote of quotes" class="" >
      <app-quote-card  [quote]="quote">
      </app-quote-card>
    </div>
 </div>
+<ng-template #noQuote>
+  <div class="d-flex align-items-center justify-content-center m-3">
+  <div class="card py-2 px-3" style="width: 18rem;">
+    Your quotes will apear here .
+  </div>
+  </div>
+</ng-template>
+</div>
+<ng-template #notLoggedin>
+  <div class="d-flex align-items-center justify-content-center m-3">
+  <div class="card py-2 px-3" style="width: 18rem;">
+    You can log in to add your quotes
+  </div>
+  </div>
+</ng-template>
 
-<div class="showHideFormButtom" 
+<div 
+*ngIf="user_id"
+class="showHideFormButtom" 
 (click)="changeIsAddEdit()"
 [ngClass]="{ 'hideFormBtton' : isAddEdit }"
 >

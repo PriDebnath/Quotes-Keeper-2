@@ -16,16 +16,3 @@
   display: block;
   text-align: right
 }
-
-.category-container{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.category{
-  padding: 0.2rem 0.7rem;
-  border-radius: 2rem;
-  font-size: 0.8rem;
-  background:  #00b4b8;
-  margin-right: 0.1rem;
-}

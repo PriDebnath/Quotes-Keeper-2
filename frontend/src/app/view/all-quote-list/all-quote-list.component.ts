@@ -24,8 +24,8 @@ export class AllQuoteListComponent implements OnInit {
 
   ngOnInit(): void {
     let token = this.localStorageService.getParsedValue("token")
-    let accessToken = this.jwtHelper.decodeToken(token.access)
-    this.user_id = accessToken.user_id
+    let accessToken = this.jwtHelper.decodeToken(token?.access!)
+    this.user_id = accessToken?.user_id!
     //
     this.title.setTitle(this.appTitle);
     //
@@ -43,7 +43,7 @@ export class AllQuoteListComponent implements OnInit {
         // alert(err.toString());
         let errr = err.toString();
         //alert(errr)
-        console.log({ errr });
+        console.log({ err });
       },
     });
   }
