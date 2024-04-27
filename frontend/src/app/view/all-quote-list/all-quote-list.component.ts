@@ -36,13 +36,8 @@ export class AllQuoteListComponent implements OnInit {
     this.quoteService.getAllQuoteList().subscribe({
       next: (res: any) => {
         this.quotes = res.results
-        console.log({ res });
-        // alert(res.toString());
       },
       error: (err: any) => {
-        // alert(err.toString());
-        let errr = err.toString();
-        //alert(errr)
         console.log({ err });
       },
     });

@@ -12,6 +12,7 @@ export class QuoteService {
   
   getAllQuoteList(data?:{user?: any}){
     let params = new HttpParams();
+    params = params.append('ordering', '-id');
     if(data?.user){
       params = params.append('user', data?.user);
     }
