@@ -31,12 +31,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Handle login logic
       this.onLogin()
-      console.log(this.loginForm.value);
     } else {
-      // Display validation errors
-      console.log('Form is invalid');
+      alert('Form is invalid');
     }
   }
   
@@ -44,23 +41,16 @@ onLogin() {
     this.authService.login(this.loginForm.value)
       .subscribe(
         response => {
-          // Handle successful login response
-          console.log('Login successful', response)
-          alert (JSON.stringify(response))
           this.localStorageService.saveKeyValue("token",response) // save token in local storage
-          this.router.navigateByUrl('/')
-           
-          
+          this.router.navigateByUrl('/all-quote-list')
         },
         error => {
-          alert (JSON.stringify(error))
-          // Handle login error
           console.error('Login error', error);
         }
       );
   }
   
-goToLoginPage(){this.router.navigateByUrl('/auth/login')}
+  goToLoginPage(){this.router.navigateByUrl('/auth/login')}
   goToRegistrationPage(){this.router.navigateByUrl('/auth/registration')}
 
 }

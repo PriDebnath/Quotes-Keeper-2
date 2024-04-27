@@ -36,14 +36,12 @@ export class MyQuoteListComponent  implements OnInit{
       this.getAllQuoteList({user_id: this.user_id!});
     }
     this.title.setTitle(this.appTitle);
-  
     
   }
 
   getAllQuoteList(data?:{user_id?: number}) {
     this.quoteService.getAllQuoteList({user: this.user_id!}).subscribe({
       next: (res: any) => {
-        console.log({ res });
         this.quotes = res.results
       },
       error: (err: any) => {
@@ -66,7 +64,10 @@ export class MyQuoteListComponent  implements OnInit{
       if (result == 'Cross click'){
          this.isAddEdit = false
       }
-      alert(new String(result).toString())
+      if (result == 'Added quote'){
+         this.getAllQuoteList({user_id: this.user_id!});
+         this.isAddEdit = false
+      }
     }, (reason) => {
       if (reason == 0){
         this.isAddEdit = false

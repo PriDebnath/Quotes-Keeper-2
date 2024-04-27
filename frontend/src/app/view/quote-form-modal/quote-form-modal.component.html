@@ -2,7 +2,7 @@
  
 <div class="modal-header d-flex align-items-center justify-content-between    ">
     <h5 class="" >{{ 'Add Quote'}}</h5>
-    <button class="btn  btn-danger" type="button"   data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+    <button class="btn  btn-outline-danger" type="button"   data-dismiss="modal" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -12,49 +12,9 @@
     <div class="m-3">
       <textarea formControlName="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type a quote ..."></textarea>
     </div>
-    <!--
-    <div class="m-3">
-      
-    
+
  
-  <mat-form-field class="example-chip-list">
-    <mat-label>Favorite Fruits</mat-label>
-    <mat-chip-grid #chipGrid aria-label="Fruit selection">
-      <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)">
-        {{fruit}}
-        <button matChipRemove [aria-label]="'remove ' + fruit">
-          <mat-icon class="btn-danger">&times;</mat-icon>
-        </button>
-      </mat-chip>
-    </mat-chip-grid>
-    <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
-      [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"/>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let fruit of sFruits " [value]="fruit">{{fruit}}</mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
 
-
-
-     
-      
-    </div>
-    
-      -->
-    <!-- <div>
-<span class="p-fluid">
-    <p-autoComplete
-    [ngModelOptions]="{ standalone: true }"
-    [(ngModel)]="sFruits" 
-    [suggestions]="allFruits" 
-    (completeMethod)="ss($event)" 
-    [multiple]="true"></p-autoComplete>
-</span>
-    
-    </div>
-      -->
       
       <!-- Available categories-->
   <div class="m-3">
@@ -92,7 +52,7 @@
 <div class="row g-3 align-items-center">
   
  
-  <div class="col-auto w-75">
+  <div class="col-auto ">
     <input type="text"
 placeholder="Add some categories ..."
 [ngModelOptions]="{ standalone: true }"
@@ -100,7 +60,7 @@ placeholder="Add some categories ..."
     id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
   </div>
   <div class="col-auto">
-<button type="button" class="btn btn-outline-success"
+<button type="button" class="btn btn-outline-success brand-btn-primary"
 (click)="addToSelectedCategory({name:inputValue})"
   >+</button>
  
@@ -116,7 +76,9 @@ placeholder="Add some categories ..."
       
       
 <div class="d-grid gap-2 m-3">
+  <!--
   <button type="button" class="btn btn-outline-danger">Cancel</button>
+  -->
   <button [ngClass]="{ 'disabled': !quoteForm.valid }"   type="button" class="btn brand-btn-primary" (click)="onQuoteFormSubmit()">
     Save
   </button>

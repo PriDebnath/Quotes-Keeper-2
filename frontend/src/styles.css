@@ -68,9 +68,11 @@ color: #03045e;
 
 .category{
   padding: 0.2rem 0.7rem;
+  margin: 1px 0rem;
   border-radius: 2rem;
   font-size: 0.8rem;
   background:  #00b4b8;
   margin-right: 0.1rem;
+  cursor: pointer;
 }
  

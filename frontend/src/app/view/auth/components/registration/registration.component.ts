@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit{
-registrationForm!: FormGroup;
+  registrationForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -29,12 +29,10 @@ registrationForm!: FormGroup;
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      // Handle login logic
      this.register()
-      console.log(this.registrationForm.value);
     } else {
       // Display validation errors
-      console.log('Form is invalid');
+      alert('Form is invalid');
     }
   }
   
@@ -42,24 +40,16 @@ register() {
     this.authService.register(this.registrationForm.value)
       .subscribe(
         response => {
-          // Handle successful login response
-          console.log('Registration successful', response)
-          alert (JSON.stringify(response))
-          //this.localStorageService.saveKeyValue("token",response) // save token in local storage
           this.router.navigateByUrl('/auth/login')
-           
-          
         },
         error => {
-          alert (JSON.stringify(error))
-          // Handle login error
           console.error('RegistrationForm error', error);
         }
       );
   }
   
-goToLoginPage(){this.router.navigateByUrl('/auth/login')}
-  goToRegistrationPage(){this.router.navigateByUrl('/auth/registration')}
+ goToLoginPage(){this.router.navigateByUrl('/auth/login')}
+ goToRegistrationPage(){this.router.navigateByUrl('/auth/registration')}
 
   
 }

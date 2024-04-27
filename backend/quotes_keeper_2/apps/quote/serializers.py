@@ -17,42 +17,23 @@ class QuoteCategorySerializer(serializers.ModelSerializer):
 class QuoteSerializer(serializers.ModelSerializer):
   user = UserSerializer(read_only = True)
   categories = QuoteCategorySerializer( many = True, read_only = True, source='quotecategory_set')
-  #category_list = CategorySerializer(many=True, write_only=True)
-  #category_list = serializers.SerializerMethodField(method_name="get_category_list")
   category_list = serializers.ListField(write_only=True, required=False)
+  
   class Meta:
      model = Quote
      fields = "__all__"
   
   def create(self, validated_data):
         user = self.context['request'].user # Take user from request
-        print(user)
-        print("validated_data=>",validated_data)
         if user:
           validated_data['user'] = user
           
         category_list = validated_data.pop('category_list', [])
         quote_instance = super().create(validated_data) # creating a quote first
-        
         if category_list:
-          
             for category in category_list:
-              print("cat=>",category)
-              try :
                 category_instance, created = Category.objects.get_or_create(**category)
-                print("category_instance",category_instance)
-              except IntegrityError as e:
-                    print("Error occurred while creating category:", e)
-                    category_instance = Category.objects.get(**category)
-              
-                
-             # if not created:
-                # Category already exists, so no need to create it again
-              #  category_instance = Category.objects.get(**category_data)
-              QuoteCategory.objects.create(quote=quote_instance,category=category_instance )
-              #print("instance=>",category_instance)
-        
-        print("quote_instance=>",quote_instance)
+                QuoteCategory.objects.create(quote=quote_instance,category=category_instance )
         return quote_instance
 
   def update(self, instance, validated_data):
@@ -74,5 +55,4 @@ class QuoteSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("You are not allowed to modify this quote.")
   
   
-  def get_category_list(self, obj):
-    return 7
+  

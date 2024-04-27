@@ -37,12 +37,9 @@ constructor(
   getUser(user_id?: number) {
     this.authService.getUser({user_id: this.user_id}).subscribe({
       next: (res: any) => {
-     //   alert(JSON.stringify(res))
-        console.log({ res });
         this.user = res
       },
       error: (err: any) => {
-    //    alert(JSON.stringify(err))
         console.log({ err });
       },
     });
