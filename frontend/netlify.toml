@@ -1,10 +1,11 @@
 # netlify.toml
 [build]
   # Directory where your Angular app is located after building
-  base = "dist/quotes_keeper_2"
+  base = "frontend"
 
   # Command to build your Angular app
-  command = "npm install --legacy-peer-deps && ng build "
+  command = "npm run build:prod"
+ # command = "npm install --legacy-peer-deps && ng build "
 
   # Publish directory for Netlify
   publish = "dist/quotes_keeper_2"
