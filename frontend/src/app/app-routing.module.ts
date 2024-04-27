@@ -11,7 +11,8 @@ const routes: Routes = [
     loadChildren: () => import('./view/auth/auth.module').then((m) => m.AuthModule),
   },
   { 
-    path: '', component: HeaderComponent,
+    path: '', 
+    component: HeaderComponent,
     children : [
       { path: 'all-quote-list', component: AllQuoteListComponent },
       { path: 'my-quote-list', component: MyQuoteListComponent },

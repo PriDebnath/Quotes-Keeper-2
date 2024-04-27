@@ -1,11 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+*{
+  transition: 0.2s;
+}
 
  
 body{
   margin: 0;
   padding: 0;
-  color: #03045e;
+ color: #03045e !important;
   background: #caf0f8;
   font-family: 'Courgette', sans-serif;
 }
@@ -26,7 +29,8 @@ body{
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: rgba(0, 255, 0, 1);
+color: #03045e;
+  background: #00b4b8 ;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
   padding: 0;
   font-size: 2rem;
@@ -49,3 +53,24 @@ body{
 .background-00b4b8{
   background: #00b4b8 !important;
 }
+  
+.brand-btn-primary{
+   color: #03045e !important;
+  background: #00b4b8 !important;
+  border-radius: 0.2rem;
+}
+
+
+.category-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category{
+  padding: 0.2rem 0.7rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  background:  #00b4b8;
+  margin-right: 0.1rem;
+}
+ 

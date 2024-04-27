@@ -10,14 +10,114 @@
  
     <form [formGroup]="quoteForm">
     <div class="m-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Quote Content</label>
-      <textarea formControlName="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea formControlName="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Type a quote ..."></textarea>
     </div>
+    <!--
+    <div class="m-3">
+      
+    
+ 
+  <mat-form-field class="example-chip-list">
+    <mat-label>Favorite Fruits</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+      <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+        {{fruit}}
+        <button matChipRemove [aria-label]="'remove ' + fruit">
+          <mat-icon class="btn-danger">&times;</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-grid>
+    <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
+      [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"/>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of sFruits " [value]="fruit">{{fruit}}</mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+
+     
+      
+    </div>
+    
+      -->
+    <!-- <div>
+<span class="p-fluid">
+    <p-autoComplete
+    [ngModelOptions]="{ standalone: true }"
+    [(ngModel)]="sFruits" 
+    [suggestions]="allFruits" 
+    (completeMethod)="ss($event)" 
+    [multiple]="true"></p-autoComplete>
+</span>
+    
+    </div>
+      -->
+      
+      <!-- Available categories-->
+  <div class="m-3">
+    <div class="">
+      Available categories
+    </div>
+<div class="category-container" >
+  <div class="category" *ngFor="let category of allCategory"
+(click)="addToSelectedCategory(category)"
+  >
+    {{ category?.name }}
+  </div>
+  </div>
+  </div>
+      
+      
+      
+      <!-- Selected categories-->
+      
+  <div class="m-3">
+    <div class="">
+      Selected categories
+    </div>
+<div class="category-container" *ngIf="allSelectedCategory.length; else  noAllSelectedCategory" >
+  <div class="category" *ngFor="let category of allSelectedCategory">
+    {{ category?.name }}
+  </div>
+  </div>
+<ng-template #noAllSelectedCategory>
+  -
+</ng-template>
+  </div>
+  
+  <div class="m-3">
+<div class="row g-3 align-items-center">
+  
+ 
+  <div class="col-auto w-75">
+    <input type="text"
+placeholder="Add some categories ..."
+[ngModelOptions]="{ standalone: true }"
+    [(ngModel)]="inputValue" 
+    id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
+<button type="button" class="btn btn-outline-success"
+(click)="addToSelectedCategory({name:inputValue})"
+  >+</button>
+ 
+  </div>
+  </div>
+  
+</div>
+  
+  
+
+
+      
       
       
 <div class="d-grid gap-2 m-3">
   <button type="button" class="btn btn-outline-danger">Cancel</button>
-  <button [ngClass]="{ 'disabled': !quoteForm.valid }"   type="button" class="btn btn-success" (click)="onQuoteFormSubmit()">
+  <button [ngClass]="{ 'disabled': !quoteForm.valid }"   type="button" class="btn brand-btn-primary" (click)="onQuoteFormSubmit()">
     Save
   </button>
 </div>

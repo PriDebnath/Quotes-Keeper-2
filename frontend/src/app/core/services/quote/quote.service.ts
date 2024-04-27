@@ -17,8 +17,17 @@ export class QuoteService {
     }
     return this.http.get<any>(`${this.API_URL}quotes/`,{ params });
   }
-
+  
   createQuote(data: any){
     return this.http.post<any>(`${this.API_URL}quotes/`, data);
   }
+  
+  getAllCategory(){
+    let params = new HttpParams();
+   // if(data?.user){
+     // params = params.append('user', data?.user);
+   // }
+    return this.http.get<any>(`${this.API_URL}quotes/categories/`,{ params });
+  }
+  
 }

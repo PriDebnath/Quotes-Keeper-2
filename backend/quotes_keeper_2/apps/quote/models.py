@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 class Category(models.Model):
   name = models.CharField(max_length = 50, unique = True)
   def __str__(self):
-    return self.name
+    return self.name or "unknown"
   
 class Quote(models.Model):
   text = models.CharField(max_length = 250)

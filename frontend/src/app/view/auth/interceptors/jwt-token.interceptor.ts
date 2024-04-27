@@ -19,10 +19,12 @@ export class JwtTokenInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    let requestObj = request
     let token = this.localStorageService.getParsedValue("token")
-    let actualRequest = request
-    let modifiedRequest = this.addToken(actualRequest, token.access)
-    return next.handle(modifiedRequest).pipe(
+    if(token){
+      requestObj = this.addToken(requestObj, token.access)
+    }
+    return next.handle(requestObj).pipe(
         catchError((err) => {
             if (err.status === 401) {
                this.router.navigateByUrl('/auth/login')

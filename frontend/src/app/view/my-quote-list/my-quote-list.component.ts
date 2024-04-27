@@ -29,15 +29,19 @@ export class MyQuoteListComponent  implements OnInit{
 
   ngOnInit(): void {
     let token = this.localStorageService.getParsedValue("token")
-    let accessToken = this.jwtHelper.decodeToken(token.access)
-    this.user_id = accessToken.user_id
+    let accessToken = this.jwtHelper.decodeToken(token?.access!)
+    this.user_id = accessToken?.user_id!
     //
-    this.getAllQuoteList();
+    if(this.user_id){
+      this.getAllQuoteList({user_id: this.user_id!});
+    }
     this.title.setTitle(this.appTitle);
+  
+    
   }
 
-  getAllQuoteList() {
-    this.quoteService.getAllQuoteList({user: this.user_id}).subscribe({
+  getAllQuoteList(data?:{user_id?: number}) {
+    this.quoteService.getAllQuoteList({user: this.user_id!}).subscribe({
       next: (res: any) => {
         console.log({ res });
         this.quotes = res.results
