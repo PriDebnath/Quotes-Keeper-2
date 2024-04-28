@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-srm@d&)^ethvrb$-2^i-*((q&$(+s8g-3ke)*mt0)$lhi^(+xo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  '127.0.0.1',
+  "quotes-keeper-2.onrender.com",
+  ]
 
 
 # Application definition
