@@ -27,13 +27,16 @@ SECRET_KEY = 'django-insecure-srm@d&)^ethvrb$-2^i-*((q&$(+s8g-3ke)*mt0)$lhi^(+xo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-  '127.0.0.1',
-  'localhost',
-  "localhost:8000",
-  "quotes-keeper-2.onrender.com",
-  ]
+# ALLOWED_HOSTS = [
+#   '127.0.0.1',
+#   'localhost',
+#   "localhost:8000",
+#   "quotes-keeper-2.onrender.com",
+#   ]
 
+ALLOWED_HOSTS = ['*']  # Allows all hosts. You might want to restrict this to specific hosts in a production environment.
+
+HOST = '0.0.0.0'  # Bind to all available network interfaces.
 
 # Application definition
 
