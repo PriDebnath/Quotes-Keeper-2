@@ -2,6 +2,7 @@ from django.urls import path , include
 from quotes_keeper_2.apps.accounts import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 defaultRouter = DefaultRouter()
 defaultRouter.register("", views.UserView)
@@ -18,3 +19,4 @@ urlpatterns = [
 
   
 ]
+urlpatterns += staticfiles_urlpatterns()
