@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'quotes_keeper_2.wsgi.application'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 RENDER_INTERNAL_DATABASE_URL = "postgres://quote_keeper_2_user:RpQpepA4tfs7daTjzQEHL2fg6G3aqthU@dpg-con1as21hbls73fas0tg-a/quote_keeper_2"
-RENDER_EXTERNAL_DATABASE_URL = "postgres://quote_keeper_2_user:RpQpepA4tfs7daTjzQEHL2fg6G3aqthU@dpg-con1as21hbls73fas0tg-a.oregon-postgres.render.com/quote_keeper_2"
+RENDER_EXTERNAL_DATABASE_URL = "postgres://quote_keeper_2_db_user:gdtXvK30hCQNzhaAwshOzG9rnTafCbup@dpg-cop2vh779t8c73fpugv0-a.singapore-postgres.render.com/quote_keeper_2_db"
 DATABASES = {
     #'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
