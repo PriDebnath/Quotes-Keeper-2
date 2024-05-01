@@ -107,7 +107,7 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
     #}
-    'default': dj_database_url.parse(RENDER_INTERNAL_DATABASE_URL)
+    'default': dj_database_url.parse(RENDER_EXTERNAL_DATABASE_URL)
 }
 
 
@@ -178,7 +178,4 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
  
-
-CORS_ALLOWED_ORIGINS = [
-    "*"]
 
