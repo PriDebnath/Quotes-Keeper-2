@@ -5,8 +5,7 @@
   <small class="user-detail">
     -   
     <ng-container *ngIf="!myQuote">
-    {{ quote.user?.first_name}}
-    {{ quote.user?.last_name}}
+    {{ quote.user?.username}}
     </ng-container>
     <ng-container *ngIf="myQuote">
     You

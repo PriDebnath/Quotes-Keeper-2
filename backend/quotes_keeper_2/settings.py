@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
   '127.0.0.1',
+  'localhost',
+  "localhost:8000",
   "quotes-keeper-2.onrender.com",
   ]
 
@@ -97,13 +99,13 @@ WSGI_APPLICATION = 'quotes_keeper_2.wsgi.application'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 RENDER_INTERNAL_DATABASE_URL = "postgres://quote_keeper_2_user:RpQpepA4tfs7daTjzQEHL2fg6G3aqthU@dpg-con1as21hbls73fas0tg-a/quote_keeper_2"
-
+RENDER_EXTERNAL_DATABASE_URL = "postgres://quote_keeper_2_user:RpQpepA4tfs7daTjzQEHL2fg6G3aqthU@dpg-con1as21hbls73fas0tg-a.oregon-postgres.render.com/quote_keeper_2"
 DATABASES = {
     #'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
     #}
-    'default': dj_database_url.parse(RENDER_INTERNAL_DATABASE_URL)
+    'default': dj_database_url.parse(RENDER_EXTERNAL_DATABASE_URL)
 }
 
 
