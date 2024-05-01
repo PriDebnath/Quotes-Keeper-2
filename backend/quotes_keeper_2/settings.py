@@ -179,9 +179,6 @@ SIMPLE_JWT = {
 }
  
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://localhost.com",
-#     "https://sub.example.com",
-# ]
-
+CORS_ALLOWED_ORIGINS = [
+    "*"]
 
