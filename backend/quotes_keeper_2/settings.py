@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,16 +27,11 @@ SECRET_KEY = 'django-insecure-srm@d&)^ethvrb$-2^i-*((q&$(+s8g-3ke)*mt0)$lhi^(+xo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = [
-#   '127.0.0.1',
-#   'localhost',
-#   "localhost:8000",
-#   "quotes-keeper-2.onrender.com",
-#   ]
+ALLOWED_HOSTS = [
+  '127.0.0.1',
+  "quotes-keeper-2.onrender.com",
+  ]
 
-ALLOWED_HOSTS = ['*']  # Allows all hosts. You might want to restrict this to specific hosts in a production environment.
-
-HOST = '0.0.0.0'  # Bind to all available network interfaces.
 
 # Application definition
 
@@ -101,13 +97,13 @@ WSGI_APPLICATION = 'quotes_keeper_2.wsgi.application'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 RENDER_INTERNAL_DATABASE_URL = "postgres://quote_keeper_2_user:RpQpepA4tfs7daTjzQEHL2fg6G3aqthU@dpg-con1as21hbls73fas0tg-a/quote_keeper_2"
-RENDER_EXTERNAL_DATABASE_URL = "postgres://quote_keeper_2_db_user:gdtXvK30hCQNzhaAwshOzG9rnTafCbup@dpg-cop2vh779t8c73fpugv0-a.singapore-postgres.render.com/quote_keeper_2_db"
+
 DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-    #}
-    'default': dj_database_url.parse(RENDER_EXTERNAL_DATABASE_URL)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+    #'default': dj_database_url.parse(RENDER_INTERNAL_DATABASE_URL)
 }
 
 
@@ -149,7 +145,7 @@ CORS_ORIGIN_ALLOW_ALL = True  # This allows all origins
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -178,4 +174,10 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
  
+
+# CORS_ALLOWED_ORIGINS = [
+#     "https://localhost.com",
+#     "https://sub.example.com",
+# ]
+
 

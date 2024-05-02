@@ -1,5 +1,18 @@
 
 <div class="quote-card" >
+  <div *ngIf="canChange">
+<button 
+  (click)="handleEdit()"
+  class="quote-edit-icon" >
+  &#9998;
+</button>
+<button 
+(click)="handleDelete()"
+class="quote-delete-icon" >
+  &times;
+</button>
+  </div>
+
   <p> '' {{ quote.text || "No Text" }} ,, </p>
   
   <small class="user-detail">

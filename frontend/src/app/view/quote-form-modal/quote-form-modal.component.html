@@ -1,7 +1,9 @@
  
  
 <div class="modal-header d-flex align-items-center justify-content-between    ">
-    <h5 class="" >{{ 'Add Quote'}}</h5>
+    <h5 class="" >
+    {{ editQuoteData ? 'Update Quote' :  'Add Quote' }}
+    </h5>
     <button class="btn  btn-outline-danger" type="button"   data-dismiss="modal" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -39,7 +41,9 @@
       Selected categories
     </div>
 <div class="category-container" *ngIf="allSelectedCategory.length; else  noAllSelectedCategory" >
-  <div class="category" *ngFor="let category of allSelectedCategory">
+  <div class="category" *ngFor="let category of allSelectedCategory"
+(click)="removeFromSelectedCategory(category)"
+  >
     {{ category?.name }}
   </div>
   </div>
@@ -80,7 +84,7 @@ placeholder="Add some categories ..."
   <button type="button" class="btn btn-outline-danger">Cancel</button>
   -->
   <button [ngClass]="{ 'disabled': !quoteForm.valid }"   type="button" class="btn brand-btn-primary" (click)="onQuoteFormSubmit()">
-    Save
+    {{ editQuoteData ? 'Update' :  'Save' }}
   </button>
 </div>
       

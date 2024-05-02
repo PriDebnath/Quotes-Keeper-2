@@ -3,7 +3,13 @@
 <div *ngIf="user_id;else notLoggedin" >
 <div *ngIf="quotes.length;else noQuote" class="quote-container">
    <div *ngFor="let quote of quotes" class="" >
-     <app-quote-card  [quote]="quote">
+     <app-quote-card 
+     [quote]="quote"
+     [myQuote]="quote.user?.id! == user_id"
+     [canChange]="true"
+     (editQuote)="openModal($event)"
+     (deleteQuote)="handleDelete($event)"
+     >
      </app-quote-card>
    </div>
 </div>
