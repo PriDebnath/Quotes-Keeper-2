@@ -45,7 +45,7 @@ export class MyQuoteListComponent  implements OnInit{
         this.quotes = res.results
       },
       error: (err: any) => {
-        console.log({ err });
+        alert(JSON.stringify(err))
       },
     });
   }
@@ -57,7 +57,7 @@ export class MyQuoteListComponent  implements OnInit{
   
   openModal(editQuoteData?: any) {
     const modalRef = this.ngbModal.open(QuoteFormModalComponent);
-    modalRef.componentInstance.editQuoteData = {};
+    modalRef.componentInstance.editQuoteData = editQuoteData!
     
     modalRef.result.then((result) => {
       
@@ -73,6 +73,31 @@ export class MyQuoteListComponent  implements OnInit{
         this.isAddEdit = false
       }
     });
+  }
+  
+  handleDelete( quote: any){
+      this.quoteService.deleteQuote(quote).subscribe({
+      next: (res: any) => {
+        this.getAllQuoteList({user_id: this.user_id!});
+        alert("Quote Deleted Successfully")
+      },
+      error: (err: any) => {
+        alert(JSON.stringify(err))
+      },
+    });
+  
+  }
+  handleEdit( quote: any){
+      this.quoteService.updateQuote(quote).subscribe({
+      next: (res: any) => {
+        this.getAllQuoteList({user_id: this.user_id!});
+        alert("Quote Updated Successfully")
+      },
+      error: (err: any) => {
+        alert(JSON.stringify(err))
+      },
+    });
+  
   }
   
   

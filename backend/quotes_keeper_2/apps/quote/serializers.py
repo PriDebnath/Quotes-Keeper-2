@@ -35,16 +35,30 @@ class QuoteSerializer(serializers.ModelSerializer):
                 category_instance, created = Category.objects.get_or_create(**category)
                 QuoteCategory.objects.create(quote=quote_instance,category=category_instance )
         return quote_instance
-
+ 
   def update(self, instance, validated_data):
-        user = self.context['request'].user
-        # Ensure only the creator can update or delete the quote
-        if instance.user == user:
-            # Ensure user is not updated on patch requests
-            validated_data.pop('user', None)
-            return super().update(instance, validated_data)
-        else:
-            raise serializers.ValidationError("You are not allowed to modify this quote.")
+    user = self.context['request'].user
+    # Ensure only the creator can update the quote
+    if instance.user == user:
+        # Remove all previously attached quote categories
+        instance.quotecategory_set.all().delete()
+        
+        # Ensure user is not updated on patch requests
+        validated_data.pop('user', None)
+        
+        # Update the quote instance
+        instance = super().update(instance, validated_data)
+
+        # Attach new categories provided in update data
+        category_list = validated_data.get('category_list', [])
+        for category in category_list:
+            category_instance, created = Category.objects.get_or_create(**category)
+            QuoteCategory.objects.create(quote=instance, category=category_instance)
+        
+        return instance
+    else:
+        raise serializers.ValidationError("You are not allowed to modify this quote.")
+
 
   def delete(self, instance):
         user = self.context['request'].user

@@ -10,3 +10,9 @@
  
 </pre>
 </div>
+
+<h2>Live 🔴 </h2>
+
+### [Quotes Keeper 2](https://quote-keeper-2.netlify.app/all-quote-list)
+
+##### https://quote-keeper-2.netlify.app/all-quote-list
