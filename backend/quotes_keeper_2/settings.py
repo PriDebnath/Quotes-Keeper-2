@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
   '127.0.0.1',
   "quotes-keeper-2.onrender.com",
   ]
-
+  
+HOST = '0.0.0.0'  # Bind to all available network interfaces.
 
 # Application definition
 
