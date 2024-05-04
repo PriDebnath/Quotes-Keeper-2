@@ -13,6 +13,7 @@ li{
 a{
   padding: 0.6rem 2rem;
   display: block;
+  color: #03045e !important;
   text-decoration: none;
   border: 0.2rem solid transparent;
 }
