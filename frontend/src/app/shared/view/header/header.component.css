@@ -14,8 +14,7 @@ a{
   padding: 0.6rem 2rem;
   display: block;
   text-decoration: none;
-  color: black;
-   border: 0.2rem solid transparent;
+  border: 0.2rem solid transparent;
 }
 
 .active-link{
