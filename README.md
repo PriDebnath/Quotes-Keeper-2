@@ -16,3 +16,9 @@
 ### [Quotes Keeper 2](https://quote-keeper-2.netlify.app/all-quote-list)
 
 ##### https://quote-keeper-2.netlify.app/all-quote-list
+
+<div style="width:100%;">
+<a href="https://quote-keeper-2.netlify.app/all-quote-list">
+<img src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
+</a>
+</div>

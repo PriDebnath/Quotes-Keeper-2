@@ -6,6 +6,8 @@ import { MyProfileComponent } from 'src/app/view/my-profile/my-profile.component
 import { QuoteFormModalComponent } from 'src/app/view/quote-form-modal/quote-form-modal.component';
 import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { of, interval, throwError, combineLatest } from 'rxjs';
+import { map, filter, take, catchError, mergeMap, retry, finalize } from 'rxjs/operators';
 
 
 @Component({
