@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges} from '@angular/core';
 import { QuoteService } from 'src/app/core/services/quote/quote.service';
 import { Title } from '@angular/platform-browser';
 import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
@@ -14,7 +14,7 @@ import { map, filter, take, catchError, mergeMap, retry, finalize } from 'rxjs/o
   templateUrl: './all-quote-list.component.html',
   styleUrls: ['./all-quote-list.component.css'],
 })
-export class AllQuoteListComponent implements OnInit {
+export class AllQuoteListComponent implements OnInit, OnChanges {
   jwtHelper: JwtHelperService = new JwtHelperService()
   appTitle = 'All Quotes';
   quotes: any = []
@@ -25,9 +25,13 @@ export class AllQuoteListComponent implements OnInit {
     private title: Title,
     private quoteService: QuoteService,
     private localStorageService: LocalStorageService,
-    ) {}
+    ) {
+      
+console.log("constructor")
+    }
 
   ngOnInit(): void {
+console.log("ngOnInit")
     let token = this.localStorageService.getParsedValue("token")
     let accessToken = this.jwtHelper.decodeToken(token?.access!)
     this.user_id = accessToken?.user_id!
@@ -51,6 +55,11 @@ forkJoin({
 });
 
   }
+
+ngOnChanges(){
+  console.log("ngOnChanges")
+}
+
 
   getAllQuoteList() {
     this.quoteService.getAllQuoteList().subscribe({

@@ -1,7 +1,9 @@
+from rest_framework import status
 from rest_framework import serializers
-from quotes_keeper_2.apps.quote.models import Quote , Category, QuoteCategory
+from django.db import transaction, IntegrityError
+from rest_framework.exceptions import ValidationError
 from quotes_keeper_2.apps.accounts.serializers import UserSerializer 
-from django.db import transaction
+from quotes_keeper_2.apps.quote.models import Quote , Category, QuoteCategory
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,7 +35,10 @@ class QuoteSerializer(serializers.ModelSerializer):
         if category_list:
             for category in category_list:
                 category_instance, created = Category.objects.get_or_create(**category)
-                QuoteCategory.objects.create(quote=quote_instance,category=category_instance )
+                try:
+                    QuoteCategory.objects.create(quote=quote_instance, category=category_instance)
+                except IntegrityError:
+                    raise ValidationError("Unique constraint violated for QuoteCategory.", code=status.HTTP_400_BAD_REQUEST)
         return quote_instance
  
   def update(self, instance, validated_data):
@@ -53,8 +58,10 @@ class QuoteSerializer(serializers.ModelSerializer):
         category_list = validated_data.get('category_list', [])
         for category in category_list:
             category_instance, created = Category.objects.get_or_create(**category)
-            QuoteCategory.objects.create(quote=instance, category=category_instance)
-        
+            try:
+              QuoteCategory.objects.create(quote=quote_instance, category=category_instance)
+            except IntegrityError:
+              raise ValidationError("Unique constraint violated for QuoteCategory.", code=status.HTTP_400_BAD_REQUEST)
         return instance
     else:
         raise serializers.ValidationError("You are not allowed to modify this quote.")

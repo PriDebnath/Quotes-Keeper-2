@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 class Category(models.Model):
   name = models.CharField(max_length = 50, unique = True)
   def __str__(self):
-    return self.name or "unknown"
+    return self.name
   
 class Quote(models.Model):
   text = models.CharField(max_length = 250)
@@ -18,10 +18,7 @@ class Quote(models.Model):
         null = True
   )
   def __str__(self):
-    if len(self.text) > 40:
-        return self.text[:40] + "..."
-    else:
-        return self.text
+    return self.text
     
 class QuoteCategory(models.Model):
   quote = models.ForeignKey(Quote, on_delete = models.CASCADE)
