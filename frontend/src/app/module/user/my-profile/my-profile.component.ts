@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/view/auth/services/auth/auth.service';
-import { LocalStorageService } from 'src/app/view/auth/services/localStorage/local-storage.service';
+import { AuthService } from 'src/app/module/auth/services/auth/auth.service';
+import { LocalStorageService } from 'src/app/module/auth/services/localStorage/local-storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { Title } from '@angular/platform-browser';

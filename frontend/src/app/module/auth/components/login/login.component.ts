@@ -2,8 +2,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {AuthService} from "src/app/view/auth/services/auth/auth.service"
-import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
+import {AuthService} from "src/app/module/auth/services/auth/auth.service"
+import {LocalStorageService} from "src/app/module/auth/services/localStorage/local-storage.service"
 import { Router } from '@angular/router';
 
 
