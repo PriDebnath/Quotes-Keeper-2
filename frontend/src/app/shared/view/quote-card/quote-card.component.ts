@@ -1,4 +1,4 @@
-import { Component,Input, Output,EventEmitter} from '@angular/core';
+import { Component,Input, Output,SimpleChanges,EventEmitter,  OnChanges,OnInit,DoCheck,AfterContentInit, AfterContentChecked,AfterViewInit, AfterViewChecked,OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-quote-card',
@@ -12,6 +12,9 @@ export class QuoteCardComponent {
 @Output() deleteQuote: EventEmitter<any> = new EventEmitter<any>();
 @Output() editQuote: EventEmitter<any> = new EventEmitter<any>();
 
+constructor() {
+}
+
 handleDelete(){
   this.deleteQuote.emit(this.quote)
 }
@@ -19,4 +22,5 @@ handleDelete(){
 handleEdit(){
   this.editQuote.emit(this.quote)
 }
+
 }
