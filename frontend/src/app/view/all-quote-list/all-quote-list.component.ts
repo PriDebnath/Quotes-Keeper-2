@@ -7,14 +7,12 @@ import { of, interval, throwError, combineLatest,forkJoin} from 'rxjs';
 import { map, filter, take, catchError, mergeMap, retry, finalize } from 'rxjs/operators';
 
 
-
-
 @Component({
   selector: 'app-all-quote-list',
   templateUrl: './all-quote-list.component.html',
   styleUrls: ['./all-quote-list.component.css'],
 })
-export class AllQuoteListComponent implements OnInit, OnChanges {
+export class AllQuoteListComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService()
   appTitle = 'All Quotes';
   quotes: any = []
@@ -25,13 +23,9 @@ export class AllQuoteListComponent implements OnInit, OnChanges {
     private title: Title,
     private quoteService: QuoteService,
     private localStorageService: LocalStorageService,
-    ) {
-      
-console.log("constructor")
-    }
+    ) {  }
 
   ngOnInit(): void {
-console.log("ngOnInit")
     let token = this.localStorageService.getParsedValue("token")
     let accessToken = this.jwtHelper.decodeToken(token?.access!)
     this.user_id = accessToken?.user_id!
@@ -39,26 +33,9 @@ console.log("ngOnInit")
     this.title.setTitle(this.appTitle);
     //
     this.getAllQuoteList();
-    
-    
-const source1$ = of(1, 2, 3, 6);
-const observable2$ = of('World');
-
-console.log({source1$})
-console.log({observable2$})
-forkJoin({
-  message1: source1$,
-  message2: observable2$
-}).subscribe({
-  next: result => console.log(result), // Output: { message1: 'Hello', message2: 'World' }
-  complete: () => console.log('All observables completed')
-});
-
+   
   }
 
-ngOnChanges(){
-  console.log("ngOnChanges")
-}
 
 
   getAllQuoteList() {
