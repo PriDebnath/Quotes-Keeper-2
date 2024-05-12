@@ -1,0 +1,33 @@
+# These are some examples of commonly ignored file patterns.
+# You should customize this list as applicable to your project.
+# Learn more about .gitignore:
+#     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+
+# frontend
+node_modules/
+package-lock.json
+dist/
+.angular
+
+
+
+# Log files
+*.log*
+
+
+#vscode
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# backend
+db.sqlite3 
+debug.log
+*.log
+*.sqlite3
+__pycache__/
+
+
+# cypress
+testing/cypress/screenshots-and-videos/
