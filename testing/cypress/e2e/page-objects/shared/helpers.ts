@@ -3,7 +3,7 @@ const baseUrl = Cypress.config().baseUrl;
 export const login = (data: { username: string; password: string }) => {
   cy.visit(baseUrl! + "/auth/login/", { failOnStatusCode: false });
 
-  cy.intercept("POST", "/accounts/auth/login/").as("jwtTokenRequest");
+  cy.intercept("POST", "/accounts/auth/login/").as("Login");
   clearElement('[formControlName="username"]');
   clearElement('[formControlName="password"]');
   typeIntoElement('[formControlName="username"]', data.username);
@@ -11,7 +11,7 @@ export const login = (data: { username: string; password: string }) => {
 
   clickElement('[data-testId="login-btn"]');
 
-  cy.wait("@jwtTokenRequest", { timeout: 60000 })
+  cy.wait("@Login", { timeout: 60000 })
     .its("response.statusCode")
     .should("eq", 200);
 };

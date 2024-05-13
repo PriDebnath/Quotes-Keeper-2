@@ -6,6 +6,7 @@ import { MyProfileComponent } from './module/user/my-profile/my-profile.componen
 import { HeaderComponent } from 'src/app/shared/view/header/header.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () =>

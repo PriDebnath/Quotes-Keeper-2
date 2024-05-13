@@ -1,24 +1,34 @@
-<div class="header" >
-  
-  <ul >
-    
-    <li >
-      <a routerLink="all-quote-list" [routerLinkActive]="['active-link']">
+<!-- header start -->
+<div class="header">
+  <ul>
+    <li>
+      <a
+        routerLink="all-quote-list"
+        [routerLinkActive]="['active-link']"
+        data-testid="all-quote-list"
+      >
         Quotes
       </a>
     </li>
-    <li >
-      <a routerLink="my-quote-list" [routerLinkActive]="['active-link']">
-        My  Quotes
+    <li>
+      <a
+        routerLink="my-quote-list"
+        [routerLinkActive]="['active-link']"
+        data-testid="my-quote-list"
+      >
+        My Quotes
       </a>
     </li>
-    <li >
-      <a routerLink="my-profile" [routerLinkActive]="['active-link']">
+    <li>
+      <a
+        routerLink="my-profile"
+        [routerLinkActive]="['active-link']"
+        data-testid="my-profile"
+      >
         Me
       </a>
     </li>
-    
   </ul>
-  
 </div>
+<!-- header end -->
 <router-outlet></router-outlet>
