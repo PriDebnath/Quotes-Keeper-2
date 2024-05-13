@@ -1,20 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule, SchemaMetadata } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+  NgModule,
+  SchemaMetadata,
+} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AllQuoteListComponent } from 'src/app/view/all-quote-list/all-quote-list.component';
-import { MyQuoteListComponent } from 'src/app/view/my-quote-list/my-quote-list.component';
-import { MyProfileComponent } from 'src/app/view/my-profile/my-profile.component';
+import { AllQuoteListComponent } from 'src/app/module/quote/all-quote-list/all-quote-list.component';
+import { MyQuoteListComponent } from 'src/app/module/quote/my-quote-list/my-quote-list.component';
+import { MyProfileComponent } from 'src/app/module/user/my-profile/my-profile.component';
 import { HeaderComponent } from 'src/app/shared/view/header/header.component';
 import { QuoteCardComponent } from 'src/app/shared/view/quote-card/quote-card.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { QuoteFormModalComponent } from 'src/app/view/quote-form-modal/quote-form-modal.component';
+import { QuoteFormModalComponent } from 'src/app/module/quote/quote-form-modal/quote-form-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from 'src/app/view/auth/auth.module';
-import { JwtTokenInterceptor } from "src/app/view/auth/interceptors/jwt-token.interceptor"
+import { AuthModule } from 'src/app/module/auth/auth.module';
+import { JwtTokenInterceptor } from 'src/app/module/auth/interceptors/jwt-token.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
- 
- 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AllQuoteListComponent,
     QuoteFormModalComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA] ,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   imports: [
     NgbModule,
     AuthModule,
@@ -37,8 +41,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true } // Register your interceptor
+    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true }, // Register your interceptor
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

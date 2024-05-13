@@ -7,7 +7,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, catchError,throwError} from 'rxjs';
-import {LocalStorageService} from "src/app/view/auth/services/localStorage/local-storage.service"
+import {LocalStorageService} from "src/app/module/auth/services/localStorage/local-storage.service"
 import { Router } from '@angular/router';
 
 @Injectable()
