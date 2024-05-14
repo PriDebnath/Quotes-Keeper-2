@@ -78,3 +78,24 @@ color: #03045e;
   cursor: pointer;
 }
  
+ 
+ .loader{
+   display: flex;
+   height: 80vh;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .loader-text{
+   opacity: 0;
+   animation: loadingTextVisiable 3s 2s forwards;
+   transition: 1s;
+ }
+ 
+ @keyframes loadingTextVisiable{
+   100%{
+     opacity: 1;
+   }
+ }
+ 
