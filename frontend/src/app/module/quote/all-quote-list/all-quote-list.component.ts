@@ -15,9 +15,10 @@ import { map, filter, take, catchError, mergeMap, retry, finalize } from 'rxjs/o
 export class AllQuoteListComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService()
   appTitle = 'All Quotes';
+  loading: boolean = false
   quotes: any = []
   user_id: number = 0
-  
+  nums = of(1,2,3)
 
   constructor(
     private title: Title,
@@ -33,19 +34,47 @@ export class AllQuoteListComponent implements OnInit {
     this.title.setTitle(this.appTitle);
     //
     this.getAllQuoteList();
-   
+    //
+    this.practicing()
   }
 
 
 
-  getAllQuoteList() {
+  getAllQuoteList(){
+    this.loading = true
     this.quoteService.getAllQuoteList().subscribe({
       next: (res: any) => {
         this.quotes = res.results
+        this.loading = false
       },
       error: (err: any) => {
+        this.loading = false
         console.log({ err });
       },
     });
+  }
+  
+  
+  practicing(){
+    // ignore this start -->
+    this.nums.subscribe((val)=>{
+      console.log({val})
+    })
+    
+    let newNumsMapped = this.nums.pipe(map((v)=>v +2))
+    newNumsMapped.subscribe((valMapped)=>{
+      console.log({valMapped})
+    })
+    
+    let filteredNums = this.nums.pipe(filter((v)=>{
+      return v > 1
+    }))
+    filteredNums.subscribe((filterVal)=>{
+      console.log({filterVal})
+    })
+    // ignore this end -->
+    
+    
+ 
   }
 }
