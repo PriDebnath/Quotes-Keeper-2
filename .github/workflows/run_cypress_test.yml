@@ -1,0 +1,37 @@
+name: Run Cypress Test
+on: 
+  workflow_dispatch: # Allow you to run it manually from github
+  schedule: 
+    - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
+jobs:
+  clone_repo_add_cypress_data:
+    runs-on: ubuntu-22.04
+    steps: 
+      - name: Checkout # clone the repository into the runner environment
+        uses: actions/checkout@v4
+      
+      - name: Add Cypress Data
+        run: |
+          cd backend
+        shell: bash
+        
+  install_packages_and_run_cypress_test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    needs: [clone_repo_add_cypress_data]
+    
+    steps: 
+      - name: Checkout 
+        uses: actions/checkout@v4
+        
+      - name: Install Dependecies
+        run: |
+          cd testing
+          npm install --legacy-peer-deps
+        shell: bash
+        
+      - name: Run Cypress Test
+        run: | 
+          cd testing
+          npx cypress run
+        shell: bash
