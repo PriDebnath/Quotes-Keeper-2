@@ -18,11 +18,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from 'src/app/module/auth/auth.module';
 import { JwtTokenInterceptor } from 'src/app/module/auth/interceptors/jwt-token.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderComponent } from './shared/view/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LoaderComponent,
     MyProfileComponent,
     QuoteCardComponent,
     MyQuoteListComponent,
