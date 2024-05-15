@@ -1,32 +1,27 @@
-
-<div class="quote-card" >
+<div class="quote-card" data-testid="quote-card">
   <div *ngIf="canChange">
-<button 
-  (click)="handleEdit()"
-  class="quote-edit-icon" >
-  &#9998;
-</button>
-<button 
-(click)="handleDelete()"
-class="quote-delete-icon" >
-  &times;
-</button>
+    <button (click)="handleEdit()" class="quote-edit-icon">&#9998;</button>
+    <button
+      (click)="handleDelete()"
+      class="quote-delete-icon"
+      data-testid="delete-quote-btn"
+    >
+      &times;
+    </button>
   </div>
 
-  <p> '' {{ quote.text || "No Text" }} ,, </p>
-  
+  <p>'' {{ quote.text || "No Text" }} ,,</p>
+
   <small class="user-detail">
-    -   
+    -
     <ng-container *ngIf="!myQuote">
-    {{ quote.user?.username}}
+      {{ quote.user?.username }}
     </ng-container>
-    <ng-container *ngIf="myQuote">
-    You
-    </ng-container>
+    <ng-container *ngIf="myQuote"> You </ng-container>
   </small>
-  <div class="category-container" >
-  <div class="category" *ngFor="let category of quote.categories">
-    {{ category?.category?.name }}
-  </div>
+  <div class="category-container">
+    <div class="category" *ngFor="let category of quote.categories">
+      {{ category?.category?.name }}
+    </div>
   </div>
 </div>

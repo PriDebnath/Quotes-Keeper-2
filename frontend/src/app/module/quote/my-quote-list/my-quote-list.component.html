@@ -1,62 +1,111 @@
-
-
-<div *ngIf="user_id;else notLoggedin" >
-<div *ngIf="!loading;else loader" >
-<div *ngIf="quotes.length;else noQuote" class="quote-container">
-   <div *ngFor="let quote of quotes" class="" >
-     <app-quote-card 
-     [quote]="quote"
-     [myQuote]="quote.user?.id! == user_id"
-     [canChange]="true"
-     (editQuote)="openModal($event)"
-     (deleteQuote)="handleDelete($event)"
-     >
-     </app-quote-card>
-   </div>
-</div>
-<ng-template #noQuote>
-  <div class="d-flex align-items-center justify-content-center m-3">
-  <div class="card py-2 px-3" style="width: 18rem;">
-    Your quotes will apear here .
+<div *ngIf="user_id; else notLoggedin">
+  <div *ngIf="!loading; else loader">
+    <div *ngIf="quotes.length; else noQuote" class="quote-container">
+      <div *ngFor="let quote of quotes" class="">
+        <app-quote-card
+          [quote]="quote"
+          [myQuote]="quote.user?.id! == user_id"
+          [canChange]="true"
+          (editQuote)="openModal($event)"
+          (deleteQuote)="handleDelete($event)"
+        >
+        </app-quote-card>
+      </div>
+    </div>
+    <ng-template #noQuote>
+      <div class="d-flex align-items-center justify-content-center m-3">
+        <div class="card py-2 px-3" style="width: 18rem">
+          Your quotes will apear here .
+        </div>
+      </div>
+    </ng-template>
   </div>
-  </div>
-</ng-template>
-</div>
- <ng-template #loader>
- <div  class="loader">
-   <div>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" width="140px" height="150px">
-    <rect fill="#00b4b8" stroke="%2300B4B8" stroke-width="5" width="30" height="30" x="5" y="0">
-      <animate attributeName="y" calcMode="spline" dur="2" values="0;70;0;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
-    </rect>
-    <rect fill="#00b4b8" stroke="%2300B4B8" stroke-width="5" width="30" height="30" x="45" y="0">
-      <animate attributeName="y" calcMode="spline" dur="2" values="0;70;0;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
-    </rect>
-    <rect fill="#00b4b8" stroke="%2300B4B8" stroke-width="5" width="30" height="30" x="85" y="0">
-      <animate attributeName="y" calcMode="spline" dur="2" values="0;70;0;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
-    </rect>
-  </svg>
- </div>
-   <p class="loader-text"> Sometimes it takes longer</p>
- </div>
-</ng-template>
+  <ng-template #loader>
+    <div class="loader">
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 140 40"
+          width="140px"
+          height="150px"
+        >
+          <rect
+            fill="#00b4b8"
+            stroke="%2300B4B8"
+            stroke-width="5"
+            width="30"
+            height="30"
+            x="5"
+            y="0"
+          >
+            <animate
+              attributeName="y"
+              calcMode="spline"
+              dur="2"
+              values="0;70;0;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-.4"
+            ></animate>
+          </rect>
+          <rect
+            fill="#00b4b8"
+            stroke="%2300B4B8"
+            stroke-width="5"
+            width="30"
+            height="30"
+            x="45"
+            y="0"
+          >
+            <animate
+              attributeName="y"
+              calcMode="spline"
+              dur="2"
+              values="0;70;0;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="-.2"
+            ></animate>
+          </rect>
+          <rect
+            fill="#00b4b8"
+            stroke="%2300B4B8"
+            stroke-width="5"
+            width="30"
+            height="30"
+            x="85"
+            y="0"
+          >
+            <animate
+              attributeName="y"
+              calcMode="spline"
+              dur="2"
+              values="0;70;0;"
+              keySplines=".5 0 .5 1;.5 0 .5 1"
+              repeatCount="indefinite"
+              begin="0"
+            ></animate>
+          </rect>
+        </svg>
+      </div>
+      <p class="loader-text">Sometimes it takes longer</p>
+    </div>
+  </ng-template>
 </div>
 <ng-template #notLoggedin>
   <div class="d-flex align-items-center justify-content-center m-3">
-  <div class="card py-2 px-3" style="width: 18rem;">
-    You can log in to add your quotes
-  </div>
+    <div class="card py-2 px-3" style="width: 18rem">
+      You can log in to add your quotes
+    </div>
   </div>
 </ng-template>
 
-
-
-
-<div 
-*ngIf="user_id"
-class="showHideFormButtom" 
-(click)="changeIsAddEdit()"
-[ngClass]="{ 'hideFormBtton' : isAddEdit }"
+<div
+  *ngIf="user_id"
+  data-testid="showHideFormButtom"
+  class="showHideFormButtom"
+  (click)="changeIsAddEdit()"
+  [ngClass]="{ hideFormBtton: isAddEdit }"
 >
   +
 </div>

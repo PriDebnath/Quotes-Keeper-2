@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-  isHidePassword: boolean = true
+  isHidePassword: boolean = true;
   registrationForm!: FormGroup;
 
   constructor(
@@ -51,6 +51,7 @@ export class RegistrationComponent implements OnInit {
   goToLoginPage() {
     this.router.navigateByUrl('/auth/login');
   }
+  
   goToRegistrationPage() {
     this.router.navigateByUrl('/auth/registration');
   }

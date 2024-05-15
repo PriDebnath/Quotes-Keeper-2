@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService {
+export class AuthService { 
+  
+  private API_URL: string = environment.APIEndpoint;
 
-  private API_URL: string = environment.APIEndpoint
   constructor(private http: HttpClient) {}
 
-  
-  
   login(data: any) {
     return this.http.post<any>(this.API_URL + 'accounts/auth/login/', data);
   }
-  
+
   register(data: any) {
     return this.http.post<any>(this.API_URL + 'accounts/registration/', data);
   }
@@ -23,10 +22,10 @@ export class AuthService {
   refreshToken(token: string) {
     return this.http.post<any>(this.API_URL + 'auth/refresh/', { token });
   }
-  
-  getUser(data?: {user_id?: number}) {
-    return this.http.get<any>(this.API_URL + 'accounts/users/' + data?.user_id! + '/');
+
+  getUser(data?: { user_id?: number }) {
+    return this.http.get<any>(
+      this.API_URL + 'accounts/users/' + data?.user_id! + '/'
+    );
   }
-  
-  
 }
