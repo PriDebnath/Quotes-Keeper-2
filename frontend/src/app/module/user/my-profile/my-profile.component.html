@@ -1,25 +1,38 @@
-
-
-<div *ngIf="user_id;else notLoggedin"  class="d-flex align-items-center justify-content-center m-3">
-<div class="card" style="width: 18rem;">
-  <div class="py-2 px-3">
-    {{ user?.username }}
-   -
-    {{ user?.email }}
+<div
+  *ngIf="user_id; else notLoggedin"
+  class="d-flex align-items-center justify-content-center m-3"
+>
+  <div class="card" style="width: 18rem">
+    <div class="py-2 px-3">
+      {{ user?.username }}
+      -
+      {{ user?.email }}
+    </div>
   </div>
-</div>
 </div>
 <ng-template #notLoggedin>
   <div class="d-flex align-items-center justify-content-center m-3">
-  <div class="card py-2 px-3" style="width: 18rem;">
-    You can log in to add your quotes
-  </div>
+    <div class="card py-2 px-3" style="width: 18rem">
+      You can log in to add your quotes
+    </div>
   </div>
 </ng-template>
 
 <div class="d-flex align-items-center justify-content-center m-3">
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button (click)="goToLoginPage()" type="button" class="btn brand-btn-primary"> Login Page</button>
-  <button  (click)="goToRegistrationPage()" type="button" class="btn brand-btn-primary "> Registration Page</button>
-</div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button
+      (click)="goToLoginPage()"
+      type="button"
+      class="btn brand-btn-primary"
+    >
+      Login Page
+    </button>
+    <button
+      (click)="goToRegistrationPage()"
+      type="button"
+      class="btn brand-btn-primary"
+    >
+      Registration Page
+    </button>
+  </div>
 </div>

@@ -28,8 +28,8 @@ export class MyQuoteListComponent implements OnInit {
   isAddEdit = false;
   quotes: any = [];
   user_id: number = 0;
-  loading: boolean = false 
-  
+  loading: boolean = false;
+
   constructor(
     private title: Title,
     private ngbModal: NgbModal,
@@ -49,14 +49,14 @@ export class MyQuoteListComponent implements OnInit {
   }
 
   getAllQuoteList(data?: { user_id?: number }) {
-    this.loading = true
+    this.loading = true;
     this.quoteService.getAllQuoteList({ user: this.user_id! }).subscribe({
       next: (res: any) => {
-        this.loading = false
+        this.loading = false;
         this.quotes = res.results;
       },
       error: (err: any) => {
-        this.loading = false
+        this.loading = false;
         alert(JSON.stringify(err));
       },
     });
