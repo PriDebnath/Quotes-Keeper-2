@@ -6,7 +6,7 @@ export default defineConfig({
       // implement node event listeners here
     },
 //    baseUrl: "http://localhost:4200",
-    baseUrl: "https://quotes-keeper-2.onrender.com/",
+    baseUrl: "https://quote-keeper-2.netlify.app",
     watchForFileChanges: false,
     experimentalRunAllSpecs: true,
     chromeWebSecurity: false,
