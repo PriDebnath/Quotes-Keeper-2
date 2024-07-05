@@ -16,6 +16,8 @@ import {
   retry,
   finalize,
 } from 'rxjs/operators';
+import { Quote } from 'src/app/models/quote.model';
+import { ResponseObject } from 'src/app/models/responseObject.model';
 
 @Component({
   selector: 'app-my-quote-list',
@@ -26,7 +28,7 @@ export class MyQuoteListComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService();
   appTitle = 'My Quotes';
   isAddEdit = false;
-  quotes: any = [];
+  quotes: Quote[] = [];
   user_id: number = 0;
   loading: boolean = false;
 
@@ -51,11 +53,11 @@ export class MyQuoteListComponent implements OnInit {
   getAllQuoteList(data?: { user_id?: number }) {
     this.loading = true;
     this.quoteService.getAllQuoteList({ user: this.user_id! }).subscribe({
-      next: (res: any) => {
+      next: (res: ResponseObject) => {
         this.loading = false;
-        this.quotes = res.results;
+        this.quotes = res.results as Quote[];
       },
-      error: (err: any) => {
+      error: (err) => {
         this.loading = false;
         alert(JSON.stringify(err));
       },
@@ -67,7 +69,7 @@ export class MyQuoteListComponent implements OnInit {
     this.openModal();
   }
 
-  openModal(editQuoteData?: any) {
+  openModal(editQuoteData?: Quote) {
     const modalRef = this.ngbModal.open(QuoteFormModalComponent);
     modalRef.componentInstance.editQuoteData = editQuoteData!;
 
@@ -89,9 +91,9 @@ export class MyQuoteListComponent implements OnInit {
     );
   }
 
-  handleDelete(quote: any) {
+  handleDelete(quote: Quote) {
     this.quoteService.deleteQuote(quote).subscribe({
-      next: (res: any) => {
+      next: (res: Quote) => {
         this.getAllQuoteList({ user_id: this.user_id! });
         alert('Quote Deleted Successfully');
       },
@@ -100,9 +102,9 @@ export class MyQuoteListComponent implements OnInit {
       },
     });
   }
-  handleEdit(quote: any) {
+  handleEdit(quote: Quote) {
     this.quoteService.updateQuote(quote).subscribe({
-      next: (res: any) => {
+      next: (res: Quote) => {
         this.getAllQuoteList({ user_id: this.user_id! });
         alert('Quote Updated Successfully');
       },

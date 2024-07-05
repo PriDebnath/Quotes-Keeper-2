@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   isHidePassword: boolean = true;
+  logging: boolean = false;
   loginForm!: FormGroup;
 
   constructor(
@@ -38,13 +39,16 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    this.logging = true;
     this.authService.login(this.loginForm.value).subscribe(
       (response) => {
         this.localStorageService.saveKeyValue('token', response); // save token in local storage
         this.router.navigateByUrl('/all-quote-list');
+        this.logging = false;
       },
       (error) => {
         console.error('Login error', error);
+        this.logging = false;
       }
     );
   }
@@ -52,7 +56,7 @@ export class LoginComponent implements OnInit {
   goToLoginPage() {
     this.router.navigateByUrl('/auth/login');
   }
-  
+
   goToRegistrationPage() {
     this.router.navigateByUrl('/auth/registration');
   }

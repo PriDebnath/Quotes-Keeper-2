@@ -1,39 +1,43 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/models/user.model';
+import { Quote } from 'src/app/models/quote.model';
+import { ResponseObject } from 'src/app/models/responseObject.model';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuoteService {
+  private API_URL: string = environment.APIEndpoint;
 
-  private API_URL: string = environment.APIEndpoint
-  
   constructor(private http: HttpClient) {}
 
-  getAllQuoteList(data?:{user?: any}){
+  getAllQuoteList(data?: { user?: number; search?: string }) {
     let params = new HttpParams();
     params = params.append('ordering', '-id');
-    if(data?.user){
+    if (data?.user) {
       params = params.append('user', data?.user);
     }
-    return this.http.get<any>(`${this.API_URL}quotes/`,{ params });
+    if (data?.search) {
+      params = params.append('search', data?.search);
+    }
+    return this.http.get<ResponseObject>(`${this.API_URL}quotes/`, { params });
   }
-  
-  createQuote(data: any){
+
+  createQuote(data: any) {
     return this.http.post<any>(`${this.API_URL}quotes/`, data);
   }
-  
-  updateQuote(quote: any){
-    return this.http.patch<any>(`${this.API_URL}quotes/${quote.id!}/`,quote);
+
+  updateQuote(quote: any) {
+    return this.http.patch<any>(`${this.API_URL}quotes/${quote.id!}/`, quote);
   }
-  
-  deleteQuote(quote: any){
+
+  deleteQuote(quote: any) {
     return this.http.delete<any>(`${this.API_URL}quotes/${quote.id!}/`);
   }
-  
-  getAllCategory(){
+
+  getAllCategory() {
     let params = new HttpParams();
-    return this.http.get<any>(`${this.API_URL}quotes/categories/`,{ params });
+    return this.http.get<any>(`${this.API_URL}quotes/categories/`, { params });
   }
-  
 }

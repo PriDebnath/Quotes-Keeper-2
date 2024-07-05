@@ -1,0 +1,7 @@
+/* File to store css variabls */
+:root {
+  --primaryColor: #00b4b8;
+  --secondaryColor: #90e0e5;
+  --bodyBackground: #caf0f8;
+  --bodyTextColor: #03045e;
+}
