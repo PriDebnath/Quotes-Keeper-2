@@ -6,7 +6,7 @@
 
 body {
   padding: 0;
-  color: #03045e !important;
+  color: var(--bodyTextColor) !important;
   background: #caf0f8 !important;
   font-family: "Courgette", sans-serif !important;
   width: 100%;
@@ -16,6 +16,8 @@ body {
 
 .quote-container {
   padding: 1rem;
+  height: 80vh;
+  overflow-y: auto;
 }
 
 .showHideFormButtom {
@@ -28,8 +30,8 @@ body {
   display: grid;
   place-items: center;
   cursor: pointer;
-  color: #03045e;
-  background: #00b4b8;
+  color: var(--bodyTextColor);
+  background: var(--primaryColor);
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
   padding: 0;
   font-size: 2rem;
@@ -40,19 +42,19 @@ body {
   background: rgba(255, 0, 0, 1);
 }
 
-/* commom style*/
+/* commom style start */
 
 .color-00b4b8 {
-  color: #00b4b8 !important;
+  color: var(--primaryColor) !important;
 }
 
 .background-00b4b8 {
-  background: #00b4b8 !important;
+  background: var(--primaryColor) !important;
 }
 
 .brand-btn-primary {
-  color: #03045e !important;
-  background: #00b4b8 !important;
+  color: var(--bodyTextColor) !important;
+  background: var(--primaryColor) !important;
   border-radius: 0.2rem;
 }
 
@@ -66,7 +68,7 @@ body {
   margin: 1px 0rem;
   border-radius: 2rem;
   font-size: 0.8rem;
-  background: #00b4b8;
+  background: var(--primaryColor);
   margin-right: 0.1rem;
   cursor: pointer;
 }
@@ -81,8 +83,8 @@ body {
 
 .loader-text {
   opacity: 0;
-  animation: loadingTextVisiable 3s 2s forwards;
   transition: 1s;
+  animation: loadingTextVisiable 3s 2s forwards;
 }
 
 @keyframes loadingTextVisiable {
@@ -90,3 +92,58 @@ body {
     opacity: 1;
   }
 }
+
+.background-white {
+  background-color: white !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+/* commom style end */
+
+/* search bar  starts*/
+
+.search-box {
+  background-color: white !important;
+  border: 0.2rem solid var(--primaryColor);
+  border-radius: 0.5rem;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.search-box input {
+  border: none;
+  width: 100%;
+}
+.search-box input:focus,
+.search-box input:active,
+.search-box input:focus-visible {
+  border: none;
+  outline: none;
+}
+/* search bar  end */
+
+/* scroll bar starts */
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--secondaryColor);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--primaryColor);
+}
+
+/* scroll bar end */

@@ -1,35 +1,32 @@
-
-
-.quote-card{
+.quote-card {
   position: relative;
-  background: #90e0e5;
+  background: var(--secondaryColor);
   padding: 1rem 1.2rem;
   margin: 0.5rem 0rem;
   border-radius: 0.5rem;
-  border: 0.2rem solid #00b4b8;
+  border: 0.2rem solid var(--primaryColor);
   /*
   box-shadow: inset 2px 2px 4px  rgba(200,140,250,0.3);
 */
-  
 }
 
-.quote-card:hover .quote-delete-icon, 
-.quote-card:hover .quote-edit-icon{
+.quote-card:hover .quote-delete-icon,
+.quote-card:hover .quote-edit-icon {
   opacity: 1;
 }
 
-.user-detail{
+.user-detail {
   display: block;
-  text-align: right
+  text-align: right;
 }
 
-.quote-edit-icon{
+.quote-edit-icon {
   opacity: 0;
   width: 2rem;
   right: 1.5rem;
   height: 2rem;
-  top: -0.5rem; 
-  position: absolute; 
+  top: -0.5rem;
+  position: absolute;
   background: yellow;
   border-radius: 4rem;
   vertical-align: middle;
@@ -37,7 +34,7 @@
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
-.quote-delete-icon{
+.quote-delete-icon {
   opacity: 0;
   width: 2rem;
   height: 2rem;
@@ -50,10 +47,10 @@
   border: 0.2rem solid brown;
 }
 
-.quote-delete-icon:hover{
+.quote-delete-icon:hover {
   border: 0.2rem solid transparent;
 }
 
-.quote-edit-icon:hover{
+.quote-edit-icon:hover {
   border: 0.2rem solid transparent;
 }
