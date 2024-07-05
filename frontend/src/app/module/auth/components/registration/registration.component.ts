@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   isHidePassword: boolean = true;
+  registering: boolean = false;
   registrationForm!: FormGroup;
 
   constructor(
@@ -38,11 +39,14 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
+    this.registering = true;
     this.authService.register(this.registrationForm.value).subscribe(
       (response) => {
         this.router.navigateByUrl('/auth/login');
+        this.registering = false;
       },
       (error) => {
+        this.registering = false;
         console.error('RegistrationForm error', error);
       }
     );
@@ -51,7 +55,7 @@ export class RegistrationComponent implements OnInit {
   goToLoginPage() {
     this.router.navigateByUrl('/auth/login');
   }
-  
+
   goToRegistrationPage() {
     this.router.navigateByUrl('/auth/registration');
   }
