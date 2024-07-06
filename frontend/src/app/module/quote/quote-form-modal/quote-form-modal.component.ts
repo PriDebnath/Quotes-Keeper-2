@@ -1,10 +1,9 @@
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Quote, Category } from 'src/app/models/quote.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ResponseObject } from 'src/app/models/responseObject.model';
 import { QuoteService } from 'src/app/core/services/quote/quote.service';
 import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-quote-form-modal',
@@ -13,11 +12,11 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class QuoteFormModalComponent implements OnInit {
   quoteForm!: FormGroup;
-  inputValue: any;
-  allCategory: any;
-  allSelectedCategory: any[] = [];
+  inputValue: string = '';
+  allCategory: Category[] = [];
+  allSelectedCategory: Category[] = [];
 
-  @Input() editQuoteData: any;
+  @Input() editQuoteData: Quote = {};
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +27,7 @@ export class QuoteFormModalComponent implements OnInit {
   ngOnInit() {
     this.quoteForm = this.getQuoteForm();
     this.getAllCategory();
+    // Handle edit mode
     if (this.editQuoteData) {
       this.quoteForm.patchValue(this.editQuoteData);
       let categoryList = this.editQuoteData?.categories!;
@@ -47,31 +47,29 @@ export class QuoteFormModalComponent implements OnInit {
   getQuoteForm() {
     return this.formBuilder.group({
       text: ['', Validators.required],
-      //categories: [[{ 'name': 'catt'}]],
+      //categories: [[{ 'name': 'cat'}]],
     });
   }
 
-  addToSelectedCategory(data: { name: string; id?: number }) {
+  addToSelectedCategory(category: Category) {
     let localVariable = this.allSelectedCategory;
-    localVariable.push(data);
+    localVariable.push(category);
     this.allSelectedCategory = localVariable;
     this.inputValue = '';
   }
 
-  removeFromSelectedCategory(clickedCategory: any) {
+  removeFromSelectedCategory(clickedCategory: Category) {
     let localVariable = this.allSelectedCategory;
-    localVariable = localVariable.filter((category) => {
-      if (clickedCategory.name != category.name) {
-        return category;
-      }
+    localVariable = localVariable.filter((category: Category) => {
+      return clickedCategory.name !== category.name;
     });
     this.allSelectedCategory = localVariable;
   }
 
   getAllCategory() {
     this.quoteService.getAllCategory().subscribe({
-      next: (res: any) => {
-        this.allCategory = res.results;
+      next: (res: ResponseObject) => {
+        this.allCategory = res.results!;
       },
       error: (err: any) => {
         alert(JSON.stringify(err));
@@ -80,7 +78,7 @@ export class QuoteFormModalComponent implements OnInit {
   }
 
   onQuoteFormSubmit() {
-    let quote = {
+    let quote: Quote = {
       ...this.quoteForm.value,
       category_list: this.allSelectedCategory,
     };
@@ -94,9 +92,9 @@ export class QuoteFormModalComponent implements OnInit {
     }
   }
 
-  createQuote(quote: any) {
+  createQuote(quote: Quote) {
     this.quoteService.createQuote(quote).subscribe({
-      next: (res: any) => {
+      next: (res: Quote) => {
         alert('Quote Created Successfully');
         this.activeModal.close('Added quote');
       },
@@ -105,9 +103,10 @@ export class QuoteFormModalComponent implements OnInit {
       },
     });
   }
-  updateQuote(quote: any) {
+
+  updateQuote(quote: Quote) {
     this.quoteService.updateQuote(quote).subscribe({
-      next: (res: any) => {
+      next: (res: Quote) => {
         alert('Quote Updated Successfully');
         this.activeModal.close('Added quote');
       },

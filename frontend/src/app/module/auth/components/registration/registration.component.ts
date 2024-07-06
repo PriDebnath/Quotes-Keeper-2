@@ -1,8 +1,8 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/module/auth/services/auth/auth.service';
 import { LocalStorageService } from 'src/app/module/auth/services/localStorage/local-storage.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-  isHidePassword: boolean = true;
-  registering: boolean = false;
   registrationForm!: FormGroup;
+  registering: boolean = false;
+  isHidePassword: boolean = true;
 
   constructor(
     private router: Router,

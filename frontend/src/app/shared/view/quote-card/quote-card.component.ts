@@ -13,6 +13,7 @@ import {
   AfterViewChecked,
   OnDestroy,
 } from '@angular/core';
+import { Quote } from 'src/app/models/quote.model';
 
 @Component({
   selector: 'app-quote-card',
@@ -20,11 +21,11 @@ import {
   styleUrls: ['./quote-card.component.css'],
 })
 export class QuoteCardComponent {
-  @Input() quote: any = {};
+  @Input() quote: Quote = {};
   @Input() myQuote: boolean = false;
   @Input() canChange: boolean = false;
-  @Output() deleteQuote: EventEmitter<any> = new EventEmitter<any>();
-  @Output() editQuote: EventEmitter<any> = new EventEmitter<any>();
+  @Output() deleteQuote: EventEmitter<Quote> = new EventEmitter<Quote>();
+  @Output() editQuote: EventEmitter<Quote> = new EventEmitter<Quote>();
 
   constructor() {}
 

@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  isHidePassword: boolean = true;
-  logging: boolean = false;
   loginForm!: FormGroup;
+  logging: boolean = false;
+  isHidePassword: boolean = true;
 
   constructor(
     private router: Router,
