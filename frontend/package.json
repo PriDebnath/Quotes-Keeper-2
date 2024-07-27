@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build:prod": "ng build  --configuration=production",
     "build-copy-and-sync": "ng build && npx cap copy && npx cap sync",
+    "open-android-studio": "npx cap open android",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
