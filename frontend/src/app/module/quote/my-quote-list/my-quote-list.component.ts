@@ -66,7 +66,7 @@ export class MyQuoteListComponent implements OnInit {
 
   changeIsAddEdit() {
     this.isAddEdit = !this.isAddEdit;
-    // this.openModal();
+    this.openModal();
   }
 
   openModal(editQuoteData?: Quote) {
