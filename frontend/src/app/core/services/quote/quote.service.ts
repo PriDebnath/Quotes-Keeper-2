@@ -24,20 +24,22 @@ export class QuoteService {
     return this.http.get<ResponseObject>(`${this.API_URL}quotes/`, { params });
   }
 
-  createQuote(data: any) {
-    return this.http.post<any>(`${this.API_URL}quotes/`, data);
+  createQuote(data: Quote) {
+    return this.http.post<Quote>(`${this.API_URL}quotes/`, data);
   }
 
-  updateQuote(quote: any) {
-    return this.http.patch<any>(`${this.API_URL}quotes/${quote.id!}/`, quote);
+  updateQuote(quote: Quote) {
+    return this.http.patch<Quote>(`${this.API_URL}quotes/${quote.id!}/`, quote);
   }
 
-  deleteQuote(quote: any) {
-    return this.http.delete<any>(`${this.API_URL}quotes/${quote.id!}/`);
+  deleteQuote(quote: Quote) {
+    return this.http.delete<Quote>(`${this.API_URL}quotes/${quote.id!}/`);
   }
 
   getAllCategory() {
     let params = new HttpParams();
-    return this.http.get<any>(`${this.API_URL}quotes/categories/`, { params });
+    return this.http.get<ResponseObject>(`${this.API_URL}quotes/categories/`, {
+      params,
+    });
   }
 }

@@ -5,6 +5,7 @@ import { LocalStorageService } from 'src/app/module/auth/services/localStorage/l
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { Title } from '@angular/platform-browser';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-my-profile',
@@ -14,7 +15,7 @@ import { Title } from '@angular/platform-browser';
 export class MyProfileComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService();
   user_id: number = 0;
-  user: any = {};
+  user: User = {};
   appTitle = 'Me';
 
   constructor(
@@ -38,7 +39,7 @@ export class MyProfileComponent implements OnInit {
 
   getUser(user_id?: number) {
     this.authService.getUser({ user_id: this.user_id }).subscribe({
-      next: (res: any) => {
+      next: (res: User) => {
         this.user = res;
       },
       error: (err: any) => {
