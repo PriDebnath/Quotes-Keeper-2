@@ -14,11 +14,8 @@ class QuoteModelViewSet(ModelViewSet):
     queryset = Quote.objects.all()
     serializer_class = QuoteSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    filterset_fields = ["user"]
-    filter_backends = [SearchFilter]
-    search_fields = [
-        "text",
-    ]
+    filterset_fields = ("user",)
+    search_fields = ("text",)
 
     def initial(self, request, *args, **kwargs):
         user = request.user
