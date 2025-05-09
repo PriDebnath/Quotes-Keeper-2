@@ -1,0 +1,1 @@
+import "./01_CRUD_quote.cy"

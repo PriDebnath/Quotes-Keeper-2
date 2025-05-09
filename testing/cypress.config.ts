@@ -5,7 +5,8 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-//    baseUrl: "http://localhost:4200",
+    // reporter: 'mochawesome', // Just running the tests will generate a report, don't need to mention it in the command
+    //    baseUrl: "http://localhost:4200",
     baseUrl: "https://quote-keeper-2.netlify.app",
     watchForFileChanges: false,
     experimentalRunAllSpecs: true,
@@ -15,7 +16,8 @@ export default defineConfig({
     viewportHeight: 950,
   },
   pageLoadTimeout: 100000,
-  video: true,
+  video: false,
+  screenshotOnRunFailure: false,
   videoCompression: 8,
   videosFolder: "cypress/screenshots-and-videos/videos",
   screenshotsFolder: "cypress/screenshots-and-videos/screenshots",
