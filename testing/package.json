@@ -1,14 +1,13 @@
 {
   "scripts": {
-    "cy:o": "npx cypress open",
-    "cy:r": "npx cypress run",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
     "cy:report:last-file": "npx cypress run  --reporter mochawesome",
+    "cy:report:single-input-file": "npx cypress run  --reporter mochawesome --spec",
     "cy:report:all-file-separately": "npx cypress run  --reporter mochawesome --reporter-options overwrite=false,html=true,json=true",
     "cy:report:all-file-separately-in-a-folder:step-1/2": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mocha,overwrite=false,html=true,json=true", 
-    "cy:merge:step-2/2": "npx mochawesome-merge cypress/reports/mocha/*.json -o cypress/reports/mocha/output.json && npx mochawesome-report-generator cypress/reports/mocha/output.json -o cypress/reports/mocha --inline",
-    "cy:report:all-file":"npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mocha,overwrite=false,html=true,json=true && npx mochawesome-merge cypress/reports/mocha/*.json -o cypress/reports/mocha/output.json && npx mochawesome-report-generator cypress/reports/mocha/output.json -o cypress/reports/mocha --inline",
-    "cy:s": "npx cypress run --spec 'cypress/e2e/tests/quotes/01_CRUD_quote.cy.ts'",
-    "cy:s:reporter": "npx cypress run --spec 'cypress/e2e/tests/quotes/01_CRUD_quote.cy.ts'  --reporter mochawesome"
+    "cy:report:merge:step-2/2": "npx mochawesome-merge cypress/reports/mocha/*.json -o cypress/reports/mocha/output.json && npx mochawesome-report-generator cypress/reports/mocha/output.json -o cypress/reports/mocha --inline",
+    "cy:report:all-file":"npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mocha,overwrite=false,html=true,json=true && npx mochawesome-merge cypress/reports/mocha/*.json -o cypress/reports/mocha/output.json && npx mochawesome-report-generator cypress/reports/mocha/output.json -o cypress/reports/mocha --inline"
   },
   "devDependencies": {
     "cypress": "^14.3.3",
