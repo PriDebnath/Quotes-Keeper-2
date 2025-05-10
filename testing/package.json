@@ -2,7 +2,8 @@
   "scripts": {
     "cy:o": "npx cypress open",
     "cy:r": "npx cypress run",
-    "cy:reporter": "npx cypress run  --reporter mochawesome",
+    "cy:report:last-file": "npx cypress run  --reporter mochawesome",
+    "cy:report:all-file-separately": "npx cypress run  --reporter mochawesome --reporter-options overwrite=false,html=true,json=true",
     "cy:s": "npx cypress run --spec 'cypress/e2e/tests/quotes/01_CRUD_quote.cy.ts'",
     "cy:s:reporter": "npx cypress run --spec 'cypress/e2e/tests/quotes/01_CRUD_quote.cy.ts'  --reporter mochawesome"
   },
@@ -12,5 +13,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.2.0"
   }
 }
