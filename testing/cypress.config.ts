@@ -1,11 +1,20 @@
 import { defineConfig } from "cypress";
+import { beforeRunHook, afterRunHook } from 'cypress-mochawesome-reporter/lib'
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('before:run', async (details) => {
+        console.log('override before:run');
+        await beforeRunHook(details);
+      });
+
+      on('after:run', async () => {
+        console.log('override after:run');
+        await afterRunHook();
+      });
     },
-    // reporter: 'mochawesome', // Just running the tests will generate a report, don't need to mention it in the command
+    reporter: 'cypress-mochawesome-reporter',
     //    baseUrl: "http://localhost:4200",
     baseUrl: "https://quote-keeper-2.netlify.app",
     watchForFileChanges: false,
@@ -22,3 +31,4 @@ export default defineConfig({
   videosFolder: "cypress/screenshots-and-videos/videos",
   screenshotsFolder: "cypress/screenshots-and-videos/screenshots",
 });
+
