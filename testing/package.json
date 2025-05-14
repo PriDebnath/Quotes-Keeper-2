@@ -10,12 +10,11 @@
     "cy:report:all-file": "npx cypress run --reporter mochawesome --reporter-options reportDir=cypress/reports/mocha,overwrite=false,html=true,json=true && npx mochawesome-merge cypress/reports/mocha/*.json -o cypress/reports/mocha/output.json && npx mochawesome-report-generator cypress/reports/mocha/output.json -o cypress/reports/mocha --inline"
   },
   "devDependencies": {
+    "@types/node": "^22.15.17",
     "cypress": "^14.3.3",
-    "mochawesome": "^7.1.3",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "mochawesome-merge": "^5.0.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
