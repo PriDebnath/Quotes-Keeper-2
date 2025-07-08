@@ -31,3 +31,4 @@ __pycache__/
 
 # cypress
 testing/cypress/screenshots-and-videos/
+testing/cypress/reports
