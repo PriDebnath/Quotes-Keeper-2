@@ -3,6 +3,13 @@ on:
   workflow_dispatch: # Allow you to run it manually from github
   schedule: 
     - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   clone_repo_add_cypress_data:
     runs-on: ubuntu-22.04
@@ -49,14 +56,42 @@ jobs:
           npx cypress run --browser chrome --spec "cypress/e2e/tests/${{ matrix.folder }}/"
         shell: bash
 
+      - name: Upload report artifact to give other job to access the generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report-${{ matrix.folder }}
+          path: testing/cypress/reports/html
+
   display_report:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     needs: [install_packages_and_run_cypress_with_matrix]
-
+    environment:
+      name: github-pages
+      
     steps: 
-      - name: Deploy report page to GitHub Page
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: testing/cypress/reports/html
+          path: testing/cypress/reports/html
+          merge-multiple: true
+      # - name: Deploy report page to GitHub Page
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: testing/cypress/reports/html
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+  
+     
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'testing/cypress/reports/html'
+    
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
