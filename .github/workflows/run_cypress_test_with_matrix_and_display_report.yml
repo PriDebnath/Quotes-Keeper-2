@@ -1,0 +1,108 @@
+name: Run Cypress Test With Matrix And Display Report
+on: 
+  workflow_dispatch: # Allow you to run it manually from github
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  clone_repo_add_cypress_data:
+    runs-on: ubuntu-22.04
+    steps: 
+      - name: Checkout # clone the repository into the runner environment
+        uses: actions/checkout@v4
+      
+      - name: Add Cypress Data
+        run: |
+          cd backend
+        shell: bash
+        
+  install_packages_and_run_cypress_with_matrix:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    needs: [clone_repo_add_cypress_data]
+    strategy:
+      matrix:
+        folder: [dummy, quotes] # params
+
+    steps: 
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Cache node_modules and Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: |
+            testing/node_modules
+            /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-testing-node-modules-${{ hashFiles('testing/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-testing-node-modules-
+
+      - name: Install Dependecies
+        run: |
+          cd testing
+          npm install --legacy-peer-deps
+        shell: bash
+        
+      - name: Run Cypress Test
+        run: | 
+          cd testing
+          npx cypress run --browser chrome --spec "cypress/e2e/tests/${{ matrix.folder }}/"
+        shell: bash
+
+      - name: Upload report artifact to give other job to access the generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report-${{ matrix.folder }}
+          path: testing/cypress/reports/html
+
+deploy_reports:
+  runs-on: ubuntu-22.04
+  needs: [install_packages_and_run_cypress_with_matrix]
+  permissions:
+    contents: write
+
+  steps:
+    - uses: actions/checkout@v4
+
+    - name: Download dummy report
+      uses: actions/download-artifact@v4
+      with:
+        name: cypress-reports-dummy
+        path: testing/cypress/reports/html/dummy
+
+    - name: Download quotes report
+      uses: actions/download-artifact@v4
+      with:
+        name: cypress-reports-quotes
+        path: testing/cypress/reports/html/quotes
+
+    - name: Create index.html
+      run: |
+        mkdir -p testing/cypress/reports/html
+        cat <<'EOF' > testing/cypress/reports/html/index.html
+        <!DOCTYPE html>
+        <html><body>
+        <h1>Cypress Reports</h1>
+        <ul>
+          <li><a href="./dummy/index.html">Dummy Report</a></li>
+          <li><a href="./quotes/index.html">Quotes Report</a></li>
+        </ul>
+        </body></html>
+        EOF
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: testing/cypress/reports/html
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
+ 
