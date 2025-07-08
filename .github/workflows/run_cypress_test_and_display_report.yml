@@ -1,8 +1,6 @@
 name: Run Cypress Test With And Display Report
 on: 
   workflow_dispatch: # Allow you to run it manually from github
-  schedule: 
-    - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -68,7 +66,7 @@ jobs:
     needs: [install_packages_and_run_cypress_with_matrix]
     environment:
       name: github-pages
-      
+
     steps: 
       - name: Checkout 
         uses: actions/checkout@v4

@@ -25,7 +25,7 @@ export default defineConfig({
     viewportHeight: 950,
   },
   pageLoadTimeout: 100000,
-  video: false,
+  video: true,
   screenshotOnRunFailure: false,
   videoCompression: 8,
   videosFolder: "cypress/screenshots-and-videos/videos",

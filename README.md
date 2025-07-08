@@ -22,3 +22,7 @@
 <img src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
 </a>
 </div>
+
+# Testing
+### [Quotes Keeper 2 - test report](https://pridebnath.github.io/Quotes-Keeper-2/)
+https://pridebnath.github.io/Quotes-Keeper-2/
