@@ -55,6 +55,9 @@ jobs:
     needs: [install_packages_and_run_cypress_with_matrix]
 
     steps: 
+      - name: Checkout 
+        uses: actions/checkout@v4
+        
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
