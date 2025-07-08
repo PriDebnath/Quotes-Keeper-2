@@ -3,6 +3,13 @@ on:
   workflow_dispatch: # Allow you to run it manually from github
   schedule: 
     - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   clone_repo_add_cypress_data:
     runs-on: ubuntu-22.04
