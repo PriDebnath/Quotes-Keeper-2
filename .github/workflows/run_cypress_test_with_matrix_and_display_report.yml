@@ -57,7 +57,7 @@ jobs:
       - name: Upload report artifact to give other job to access the generated report
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-report-${{ matrix.folder }}
+          name: cypress-reports-${{ matrix.folder }}
           path: testing/cypress/reports/html
 
   deploy_reports:
