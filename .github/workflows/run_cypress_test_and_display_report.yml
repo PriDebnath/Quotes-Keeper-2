@@ -1,0 +1,60 @@
+name: Run Cypress Test With And Display Report
+on: 
+  workflow_dispatch: # Allow you to run it manually from github
+  schedule: 
+    - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
+jobs:
+  clone_repo_add_cypress_data:
+    runs-on: ubuntu-22.04
+    steps: 
+      - name: Checkout # clone the repository into the runner environment
+        uses: actions/checkout@v4
+      
+      - name: Add Cypress Data
+        run: |
+          cd backend
+        shell: bash
+        
+  install_packages_and_run_cypress_with_matrix:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    needs: [clone_repo_add_cypress_data]
+    strategy:
+      matrix:
+        folder: [dummy, quotes] # params
+
+    steps: 
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Cache node_modules and Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: |
+            testing/node_modules
+            /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-testing-node-modules-${{ hashFiles('testing/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-testing-node-modules-
+
+      - name: Install Dependecies
+        run: |
+          cd testing
+          npm install --legacy-peer-deps
+        shell: bash
+        
+      - name: Run Cypress Test
+        run: | 
+          cd testing
+          npx cypress run --browser chrome --spec "cypress/e2e/tests/${{ matrix.folder }}/"
+        shell: bash
+
+  display_report:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    needs: [install_packages_and_run_cypress_with_matrix]
+      - name: Deploy report page to GitHub Page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: testing/cypress/reports/html
