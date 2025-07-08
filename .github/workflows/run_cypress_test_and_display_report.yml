@@ -1,4 +1,4 @@
-name: Run Cypress Test With And Display Report
+name: Run Cypress Test And Display Report
 on: 
   workflow_dispatch: # Allow you to run it manually from github
 
@@ -24,9 +24,6 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     needs: [clone_repo_add_cypress_data]
-    strategy:
-      matrix:
-        folder: [dummy, quotes] # params
 
     steps: 
       - name: Checkout 
@@ -51,13 +48,13 @@ jobs:
       - name: Run Cypress Test
         run: | 
           cd testing
-          npx cypress run --browser chrome --spec "cypress/e2e/tests/${{ matrix.folder }}/"
+          npx cypress run 
         shell: bash
 
       - name: Upload report artifact to give other job to access the generated report
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-report-${{ matrix.folder }}
+          name: cypress-report
           path: testing/cypress/reports/html
 
   display_report:
@@ -75,16 +72,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: testing/cypress/reports/html
-          merge-multiple: true
-      # - name: Deploy report page to GitHub Page
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: testing/cypress/reports/html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
   
-     
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -93,3 +84,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+              # - name: Deploy report page to GitHub Page
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: testing/cypress/reports/html
