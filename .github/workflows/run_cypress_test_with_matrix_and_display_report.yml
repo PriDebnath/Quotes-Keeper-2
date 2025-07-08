@@ -63,7 +63,9 @@ jobs:
   deploy_reports:
     runs-on: ubuntu-22.04
     needs: [install_packages_and_run_cypress_with_matrix]
-
+    environment:
+      name: github-pages
+      
     steps:
       - uses: actions/checkout@v4
 
