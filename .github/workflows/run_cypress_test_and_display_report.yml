@@ -49,6 +49,12 @@ jobs:
           npx cypress run --browser chrome --spec "cypress/e2e/tests/${{ matrix.folder }}/"
         shell: bash
 
+      - name: Upload report artifact to give other job to access the generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report-${{ matrix.folder }}
+          path: testing/cypress/reports/html
+
   display_report:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
@@ -58,6 +64,11 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v4
 
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: testing/cypress/reports/html
+          merge-multiple: true
       # - name: Deploy report page to GitHub Page
       #   uses: peaceiris/actions-gh-pages@v3
       #   with:
