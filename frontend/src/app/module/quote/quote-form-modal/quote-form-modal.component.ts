@@ -9,6 +9,7 @@ import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
   selector: 'app-quote-form-modal',
   templateUrl: './quote-form-modal.component.html',
   styleUrls: ['./quote-form-modal.component.css'],
+  standalone: false
 })
 export class QuoteFormModalComponent implements OnInit {
   quoteForm!: FormGroup;

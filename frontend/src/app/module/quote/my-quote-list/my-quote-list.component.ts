@@ -23,6 +23,7 @@ import { ResponseObject } from 'src/app/models/responseObject.model';
   selector: 'app-my-quote-list',
   templateUrl: './my-quote-list.component.html',
   styleUrls: ['./my-quote-list.component.css'],
+  standalone: false
 })
 export class MyQuoteListComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService();

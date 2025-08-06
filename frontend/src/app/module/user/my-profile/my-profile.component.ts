@@ -11,6 +11,7 @@ import { User } from 'src/app/models/user.model';
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.css'],
+  standalone: false
 })
 export class MyProfileComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService();

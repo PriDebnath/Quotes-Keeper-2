@@ -20,6 +20,7 @@ import { ResponseObject } from 'src/app/models/responseObject.model';
   selector: 'app-all-quote-list',
   templateUrl: './all-quote-list.component.html',
   styleUrls: ['./all-quote-list.component.css'],
+  standalone: false
 })
 export class AllQuoteListComponent implements OnInit {
   jwtHelper: JwtHelperService = new JwtHelperService();

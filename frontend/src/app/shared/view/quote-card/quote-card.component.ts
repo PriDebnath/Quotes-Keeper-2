@@ -19,6 +19,7 @@ import { Quote } from 'src/app/models/quote.model';
   selector: 'app-quote-card',
   templateUrl: './quote-card.component.html',
   styleUrls: ['./quote-card.component.css'],
+  standalone: false
 })
 export class QuoteCardComponent {
   @Input() quote: Quote = {};

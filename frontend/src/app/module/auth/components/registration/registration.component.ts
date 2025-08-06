@@ -8,6 +8,7 @@ import { LocalStorageService } from 'src/app/module/auth/services/localStorage/l
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css'],
+  standalone: false
 })
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
