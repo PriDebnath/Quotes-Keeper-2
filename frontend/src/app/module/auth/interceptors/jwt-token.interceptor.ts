@@ -36,7 +36,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
         }
         // console.warn("Going to login page due to error");
         // this.router.navigateByUrl('/auth/login');
-        this.errorHandler.errorHandler(err);
+        this.errorHandler.handleError(err);
         return throwError(err);
       })
     );

@@ -53,7 +53,6 @@ export class RegistrationComponent implements OnInit {
       },
       (error) => {
         this.registering = false;
-        this.errorHandler.errorHandler(error);
       }
     );
   }

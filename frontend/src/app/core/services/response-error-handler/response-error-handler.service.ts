@@ -9,12 +9,20 @@ export class ErrorHandlerService {
 
   constructor(private notification: NotificationService) {}
 
-  errorHandler(error: any) {
+  handleError(error: any) {
     const errorTitle = 'Error';
     let errorMessage = 'An unexpected error occurred.';
 
     if (error instanceof HttpErrorResponse) {
       const responseError = error?.error;
+
+      // 🔹 Handle server unreachable / network error
+      if (error.status === 0) {
+        errorMessage = 'Unable to connect to the server. Please check your internet connection or try again later.';
+        this.notification.error(errorMessage, errorTitle);
+        console.error('Network/Server error:', error);
+        return errorMessage;
+      }
 
       // ✅ Backend payload exists and is not null/undefined/empty
       if (responseError && Object.keys(responseError || {}).length > 0) {
