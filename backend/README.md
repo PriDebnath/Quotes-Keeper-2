@@ -46,3 +46,13 @@ or start server with gunicorn
 ```
   gunicorn quotes_keeper_2.wsgi:application
 ```
+
+#### Migration
+
+```
+  python manage.py makemigrations
+```
+
+```
+  python manage.py migrate
+```
