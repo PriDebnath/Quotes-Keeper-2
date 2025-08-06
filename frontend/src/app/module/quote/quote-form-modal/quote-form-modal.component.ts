@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResponseObject } from 'src/app/models/responseObject.model';
 import { QuoteService } from 'src/app/core/services/quote/quote.service';
 import { Component, ElementRef, ViewChild, OnInit, Input } from '@angular/core';
+import { ErrorHandlerService } from 'src/app/core/services/response-error-handler/response-error-handler.service';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 
 @Component({
   selector: 'app-quote-form-modal',
@@ -22,8 +24,10 @@ export class QuoteFormModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private quoteService: QuoteService,
-    private activeModal: NgbActiveModal
-  ) {}
+    private activeModal: NgbActiveModal,
+    private notification: NotificationService,
+    private errorHandler: ErrorHandlerService,
+  ) { }
 
   ngOnInit() {
     this.quoteForm = this.getQuoteForm();
@@ -73,7 +77,6 @@ export class QuoteFormModalComponent implements OnInit {
         this.allCategory = res.results!;
       },
       error: (err: any) => {
-        alert(JSON.stringify(err));
       },
     });
   }
@@ -96,11 +99,10 @@ export class QuoteFormModalComponent implements OnInit {
   createQuote(quote: Quote) {
     this.quoteService.createQuote(quote).subscribe({
       next: (res: Quote) => {
-        alert('Quote Created Successfully');
+        this.notification.success('Quote Created Successfully');
         this.activeModal.close('Added quote');
       },
       error: (err: any) => {
-        alert(JSON.stringify(err));
       },
     });
   }
@@ -108,11 +110,10 @@ export class QuoteFormModalComponent implements OnInit {
   updateQuote(quote: Quote) {
     this.quoteService.updateQuote(quote).subscribe({
       next: (res: Quote) => {
-        alert('Quote Updated Successfully');
+        this.notification.success('Quote Updated Successfully');
         this.activeModal.close('Added quote');
       },
       error: (err: any) => {
-        alert(JSON.stringify(err));
       },
     });
   }

@@ -18,6 +18,7 @@ import {
 } from 'rxjs/operators';
 import { Quote } from 'src/app/models/quote.model';
 import { ResponseObject } from 'src/app/models/responseObject.model';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
 
 @Component({
   selector: 'app-my-quote-list',
@@ -36,7 +37,8 @@ export class MyQuoteListComponent implements OnInit {
   constructor(
     private title: Title,
     private ngbModal: NgbModal,
-    private quoteService: QuoteService,
+    private quoteService: QuoteService,   
+     private notification: NotificationService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -60,7 +62,6 @@ export class MyQuoteListComponent implements OnInit {
       },
       error: (err) => {
         this.loading = false;
-        alert(JSON.stringify(err));
       },
     });
   }
@@ -96,21 +97,9 @@ export class MyQuoteListComponent implements OnInit {
     this.quoteService.deleteQuote(quote).subscribe({
       next: (res: Quote) => {
         this.getAllQuoteList({ user_id: this.user_id! });
-        alert('Quote Deleted Successfully');
+        this.notification.success('Quote Deleted Successfully');
       },
       error: (err: any) => {
-        alert(JSON.stringify(err));
-      },
-    });
-  }
-  handleEdit(quote: Quote) {
-    this.quoteService.updateQuote(quote).subscribe({
-      next: (res: Quote) => {
-        this.getAllQuoteList({ user_id: this.user_id! });
-        alert('Quote Updated Successfully');
-      },
-      error: (err: any) => {
-        alert(JSON.stringify(err));
       },
     });
   }
