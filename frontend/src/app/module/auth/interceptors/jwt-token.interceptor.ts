@@ -9,11 +9,13 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 import { LocalStorageService } from 'src/app/module/auth/services/localStorage/local-storage.service';
 import { Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/core/services/response-error-handler/response-error-handler.service';
 
 @Injectable()
 export class JwtTokenInterceptor implements HttpInterceptor {
   constructor(
     private router: Router,
+            private errorHandler: ErrorHandlerService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -34,6 +36,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
         }
         // console.warn("Going to login page due to error");
         // this.router.navigateByUrl('/auth/login');
+        this.errorHandler.errorHandler(err);
         return throwError(err);
       })
     );
