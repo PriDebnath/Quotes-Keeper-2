@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.logging = true;
     this.authService.login(this.loginForm.value).subscribe(
       (response) => {
-        this.notification.success("Login successfull")
+        this.notification.success("Login successful")
         this.localStorageService.saveKeyValue('token', response); // save token in local storage
         this.router.navigateByUrl('/all-quote-list');
         this.logging = false;
