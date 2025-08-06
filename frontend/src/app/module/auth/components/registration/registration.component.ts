@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/module/auth/services/auth/auth.service';
 import { LocalStorageService } from 'src/app/module/auth/services/localStorage/local-storage.service';
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
+import { ErrorHandlerService } from 'src/app/core/services/response-error-handler/response-error-handler.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,8 +21,10 @@ export class RegistrationComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
+    private notification: NotificationService,
+    private errorHandler: ErrorHandlerService,
     private localStorageService: LocalStorageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -35,7 +39,7 @@ export class RegistrationComponent implements OnInit {
       this.register();
     } else {
       // Display validation errors
-      alert('Form is invalid');
+      this.notification.info('Form is invalid');
     }
   }
 
@@ -43,12 +47,13 @@ export class RegistrationComponent implements OnInit {
     this.registering = true;
     this.authService.register(this.registrationForm.value).subscribe(
       (response) => {
+        this.notification.success("Registeration successfull")
         this.router.navigateByUrl('/auth/login');
         this.registering = false;
       },
       (error) => {
         this.registering = false;
-        console.error('RegistrationForm error', error);
+        this.errorHandler.errorHandler(error);
       }
     );
   }
