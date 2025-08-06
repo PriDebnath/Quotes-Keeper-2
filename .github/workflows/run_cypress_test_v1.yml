@@ -1,8 +1,8 @@
 name: Run Cypress Test
 on: 
   workflow_dispatch: # Allow you to run it manually from github
-  schedule: 
-    - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
+  # schedule: 
+  #   - cron: "41 5 * * 1" # It will run on Monday at 11:11 AM IST
 jobs:
   clone_repo_add_cypress_data:
     runs-on: ubuntu-22.04

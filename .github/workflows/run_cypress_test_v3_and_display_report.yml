@@ -20,7 +20,7 @@ jobs:
           cd backend
         shell: bash
         
-  install_packages_and_run_cypress_with_matrix:
+  install_packages_and_run_cypress:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     needs: [clone_repo_add_cypress_data]
