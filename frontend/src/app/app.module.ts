@@ -19,6 +19,8 @@ import { AuthModule } from 'src/app/module/auth/auth.module';
 import { JwtTokenInterceptor } from 'src/app/module/auth/interceptors/jwt-token.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderComponent } from './shared/view/loader/loader.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,10 +39,15 @@ import { LoaderComponent } from './shared/view/loader/loader.component';
     AuthModule,
     FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+      ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true }, // Register your interceptor
