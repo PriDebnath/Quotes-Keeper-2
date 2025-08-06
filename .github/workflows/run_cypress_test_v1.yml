@@ -1,4 +1,4 @@
-name: Run Cypress Test
+name: Run Cypress Test - v1
 on: 
   workflow_dispatch: # Allow you to run it manually from github
   # schedule: 

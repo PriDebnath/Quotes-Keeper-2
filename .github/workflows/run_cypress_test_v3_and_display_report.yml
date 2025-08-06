@@ -1,4 +1,4 @@
-name: Run Cypress Test And Display Report
+name: Run Cypress Test And Display Report - v3
 on: 
   workflow_dispatch: # Allow you to run it manually from github
 
@@ -60,7 +60,7 @@ jobs:
   display_report:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
-    needs: [install_packages_and_run_cypress_with_matrix]
+    needs: [install_packages_and_run_cypress]
     environment:
       name: github-pages
 

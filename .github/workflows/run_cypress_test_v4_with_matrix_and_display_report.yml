@@ -1,4 +1,4 @@
-name: Run Cypress Test With Matrix And Display Report
+name: Run Cypress Test With Matrix And Display Report - v4
 on: 
   workflow_dispatch: # Allow you to run it manually from github
 

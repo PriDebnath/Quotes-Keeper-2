@@ -1,4 +1,4 @@
-name: Run Cypress Test With Matrix
+name: Run Cypress Test With Matrix - v2
 on: 
   workflow_dispatch: # Allow you to run it manually from github
 
