@@ -51,6 +51,11 @@ jobs:
           npx cypress run 
         shell: bash
 
+      - name: Inject <base> tag for relative paths
+        run: |
+          cd testing/cypress/reports/html
+          find . -type f -name "*.html" -exec sed -i 's|<head>|<head><base href="./">|' {} +
+
       - name: Upload report artifact to give other job to access the generated report
         uses: actions/upload-artifact@v4
         with:
