@@ -14,16 +14,6 @@ export default defineConfig({
       });
     },
     reporter: 'cypress-mochawesome-reporter',
-    reporterOptions: {
-      reportDir: "cypress/reports/html",
-      videoOnFailOnly: false,
-      inlineAssets: true,
-      charts: true,
-      embeddedScreenshots: true,
-      saveAllAttempts: false,
-      saveVideos: true,   
-      videosFolder: "./"
-    },
     baseUrl: "https://quote-keeper-2.netlify.app",
     watchForFileChanges: false,
     experimentalRunAllSpecs: true,
@@ -34,7 +24,6 @@ export default defineConfig({
   },
   pageLoadTimeout: 100000,
   video: true,
-  retries: 1,
   videoCompression: 8,
   screenshotOnRunFailure: false,
 });
