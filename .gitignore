@@ -30,5 +30,7 @@ __pycache__/
 
 
 # cypress
+testing/cypress/videos/
+testing/cypress/screenshots/
 testing/cypress/screenshots-and-videos/
 testing/cypress/reports
