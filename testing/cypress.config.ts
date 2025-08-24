@@ -33,6 +33,7 @@ export default defineConfig({
   },
   pageLoadTimeout: 100000,
   video: true,
-  screenshotOnRunFailure: false,
+  retries: 1,
   videoCompression: 8,
+  screenshotOnRunFailure: false,
 });
