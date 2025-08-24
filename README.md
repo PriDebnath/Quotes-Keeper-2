@@ -11,18 +11,27 @@
 </pre>
 </div>
 
-<h2>Live 🔴 </h2>
+# Live 🔴
 
 ### [Quotes Keeper 2](https://quote-keeper-2.netlify.app/all-quote-list)
 
 ##### https://quote-keeper-2.netlify.app/all-quote-list
 
 <div style="width:100%;">
-<a href="https://quote-keeper-2.netlify.app/all-quote-list">
-<img src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
-</a>
+  <a href="https://quote-keeper-2.netlify.app/all-quote-list">
+    <img src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
+  </a>
 </div>
 
-# Testing
+---
+
+# Test Report 📈
 ### [Quotes Keeper 2 - test report](https://pridebnath.github.io/Quotes-Keeper-2/)
+
 https://pridebnath.github.io/Quotes-Keeper-2/
+
+<div style="width:100%;">
+  <a href="https://pridebnath.github.io/Quotes-Keeper-2/">
+    <img src = "frontend/src/assets/images/generated-html-report.png" />
+  </a>
+</div>
