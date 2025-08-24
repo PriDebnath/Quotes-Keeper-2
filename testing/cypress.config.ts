@@ -21,7 +21,8 @@ export default defineConfig({
       charts: true,
       embeddedScreenshots: true,
       saveAllAttempts: false,
-      saveVideos: true,          
+      saveVideos: true,   
+      videosFolder: "./"
     },
     baseUrl: "https://quote-keeper-2.netlify.app",
     watchForFileChanges: false,
