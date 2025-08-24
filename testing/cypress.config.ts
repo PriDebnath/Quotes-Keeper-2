@@ -8,7 +8,6 @@ export default defineConfig({
         console.log('override before:run');
         await beforeRunHook(details);
       });
-
       on('after:run', async () => {
         console.log('override after:run');
         await afterRunHook();
@@ -19,8 +18,11 @@ export default defineConfig({
       reportDir: "cypress/reports/html",
       videoOnFailOnly: false,
       inlineAssets: true,
+      charts: true,
+      embeddedScreenshots: true,
+      saveAllAttempts: false,
+      saveVideos: true,          
     },
-    //    baseUrl: "http://localhost:4200",
     baseUrl: "https://quote-keeper-2.netlify.app",
     watchForFileChanges: false,
     experimentalRunAllSpecs: true,
@@ -34,4 +36,3 @@ export default defineConfig({
   screenshotOnRunFailure: false,
   videoCompression: 8,
 });
-
