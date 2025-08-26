@@ -4,6 +4,7 @@ on:
 
 jobs:
   clone_repo_add_cypress_data:
+    runs-on: ubuntu-22.04
     steps: 
       - name: Checkout # clone the repository into the runner environment
         uses: actions/checkout@v4
