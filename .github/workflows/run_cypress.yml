@@ -1,0 +1,20 @@
+name: run cypress
+on: 
+  workflow_dispatch: # Allow you to run it manually from github
+
+jobs:
+  clone_repo_add_cypress_data:
+    steps: 
+      - name: Checkout # clone the repository into the runner environment
+        uses: actions/checkout@v4
+      
+      - name: Install Dependecies
+        run: |
+          cd testing
+          npm install --legacy-peer-deps
+        shell: bash
+
+      - name: run Cypress 
+        run: |
+          npx cypress run
+        shell: bash
