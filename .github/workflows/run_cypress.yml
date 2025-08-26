@@ -20,3 +20,47 @@ jobs:
           cd testing
           npx cypress run
         shell: bash
+
+      - name: Copy Cypress videos into report folder
+        run: |
+          mkdir -p testing/cypress/reports/html/videos/cypress/e2e/tests
+          # Copy videos both ways so both possible paths resolve
+          cp -r testing/cypress/videos/* testing/cypress/reports/html/videos/ || true
+          cp -r testing/cypress/videos/* testing/cypress/reports/html/videos/cypress/e2e/tests/ || true
+          cp -r testing/cypress/videos/* videos/cypress/e2e/tests/ || true
+          cp -r testing/cypress/videos/* videos || true
+   
+      - name: Upload report artifact to give other job to access the generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: testing/cypress/reports/html
+
+  display_report:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    needs: [clone_repo_add_cypress_data]
+    environment:
+      name: github-pages
+
+    steps: 
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+      - name: Download Cypress report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cypress-report
+          path: testing/cypress/reports/html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+  
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'testing/cypress/reports/html'
+    
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
