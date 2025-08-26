@@ -17,5 +17,6 @@ jobs:
 
       - name: run Cypress 
         run: |
+          cd testing
           npx cypress run
         shell: bash
