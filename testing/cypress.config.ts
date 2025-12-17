@@ -12,6 +12,21 @@ export default defineConfig({
         console.log('override after:run');
         await afterRunHook();
       });
+      // //bypass cloud flare check //@needs review
+      // on(
+      //   "before:browser:launch",
+      //   (browser: Cypress.Browser, launchOptions: Cypress.BeforeBrowserLaunchOptions) => {
+      //     if (browser.family === "chromium" && launchOptions.args) {
+      //       launchOptions.args.push("--disable-blink-features=AutomationControlled");
+      //       launchOptions.args.push(
+      //         "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+      //           "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 " +
+      //           "Safari/537.36 Cypress/14.5.2"
+      //       );
+      //     }
+      //     return launchOptions;
+      //   }
+      // );
     },
     reporter: 'cypress-mochawesome-reporter',
     baseUrl: "https://quote-keeper-2.netlify.app",
