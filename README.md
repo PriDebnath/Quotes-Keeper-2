@@ -16,7 +16,7 @@
 https://quote-keeper-2.netlify.app/all-quote-list
 
 ---
-## 📈 Test Report 📈
+## 📈 Test Report
 
 ### 📈 🖼️ Screenshot
   <a href="https://pridebnath.github.io/Quotes-Keeper-2/">
