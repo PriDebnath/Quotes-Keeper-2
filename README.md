@@ -19,7 +19,7 @@
 
 <div style="width:100%;">
   <a href="https://quote-keeper-2.netlify.app/all-quote-list">
-    <img src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
+    <img height ="480" src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
   </a>
 </div>
 
