@@ -16,7 +16,7 @@
 https://quote-keeper-2.netlify.app/all-quote-list
 
 ---
-## Test Report 📈
+## 📈 Test Report 📈
 
 ### 📈 🖼️ Screenshot
   <a href="https://pridebnath.github.io/Quotes-Keeper-2/">
@@ -31,7 +31,7 @@ https://pridebnath.github.io/Quotes-Keeper-2/
 ---
 
 
-## Random stuff
+##  Random stuff
 
 <div style="text-align: center;">
 <pre style="display: inline-block; width:0px; text-align: left; text-decoration: none; " >
