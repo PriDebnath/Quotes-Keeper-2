@@ -47,19 +47,22 @@ class QuoteSerializer(serializers.ModelSerializer):
     if instance.user == user:
         # Remove all previously attached quote categories
         instance.quotecategory_set.all().delete()
-        
+
         # Ensure user is not updated on patch requests
         validated_data.pop('user', None)
-        
+
+        # Extract category list (if any) before updating the instance so it
+        # doesn't get passed to the model field updates.
+        category_list = validated_data.pop('category_list', [])
+
         # Update the quote instance
         instance = super().update(instance, validated_data)
 
         # Attach new categories provided in update data
-        category_list = validated_data.get('category_list', [])
         for category in category_list:
             category_instance, created = Category.objects.get_or_create(**category)
             try:
-              QuoteCategory.objects.create(quote=quote_instance, category=category_instance)
+              QuoteCategory.objects.create(quote=instance, category=category_instance)
             except IntegrityError:
               raise ValidationError("Unique constraint violated for QuoteCategory.", code=status.HTTP_400_BAD_REQUEST)
         return instance
