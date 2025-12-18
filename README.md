@@ -11,6 +11,9 @@
 https://github.com/user-attachments/assets/99119d96-729f-4085-ada5-01b42acffbc2
 
 
+⬇️[Demo Video Download](frontend/src/assets/videos/Quotes-Keeper-2-on-18-12-2025.webm)
+
+
 ### 🔴 ↗️ Link
 
 https://quote-keeper-2.netlify.app/all-quote-list
