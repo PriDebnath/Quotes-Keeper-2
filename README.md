@@ -1,3 +1,27 @@
+## 🔴 Demo
+
+### 🔴 🖼️ Screenshot
+
+<a href="https://quote-keeper-2.netlify.app/all-quote-list">
+    <img height ="480" src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
+
+
+### 🔴 🎥 Video
+
+https://github.com/user-attachments/assets/c2614901-c1cd-427b-8577-4dc9e6c8e982
+
+
+⬇️[Demo Video Download](videos/theme-changer.mp4)
+
+
+### 🔴 ↗️ Link
+
+https://quote-keeper-2.netlify.app/all-quote-list
+
+---
+
+## Random stuff
+
 <div style="text-align: center;">
 <pre style="display: inline-block; width:0px; text-align: left; text-decoration: none; " >
    ____              __          __ __                             ___ 
@@ -11,27 +35,17 @@
 </pre>
 </div>
 
-# Live 🔴
-
-### [Quotes Keeper 2](https://quote-keeper-2.netlify.app/all-quote-list)
-
-##### https://quote-keeper-2.netlify.app/all-quote-list
-
-<div style="width:100%;">
-  <a href="https://quote-keeper-2.netlify.app/all-quote-list">
-    <img height ="480" src = "frontend/src/assets/images/quotes_keeper_2.0.jpg" />
-  </a>
-</div>
 
 ---
 
-# Test Report 📈
-### [Quotes Keeper 2 - test report](https://pridebnath.github.io/Quotes-Keeper-2/)
 
-https://pridebnath.github.io/Quotes-Keeper-2/
+## Test Report 📈
 
-<div style="width:100%;">
+### 📈 🖼️ Screenshot
   <a href="https://pridebnath.github.io/Quotes-Keeper-2/">
     <img src = "frontend/src/assets/images/generated-html-report.png" />
   </a>
-</div>
+
+### 📈 ↗️ Link
+
+https://pridebnath.github.io/Quotes-Keeper-2/
