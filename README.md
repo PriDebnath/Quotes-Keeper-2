@@ -16,6 +16,20 @@
 https://quote-keeper-2.netlify.app/all-quote-list
 
 ---
+## Test Report 📈
+
+### 📈 🖼️ Screenshot
+  <a href="https://pridebnath.github.io/Quotes-Keeper-2/">
+    <img src = "frontend/src/assets/images/generated-html-report.png" />
+  </a>
+
+### 📈 ↗️ Link
+
+https://pridebnath.github.io/Quotes-Keeper-2/
+
+
+---
+
 
 ## Random stuff
 
@@ -36,13 +50,3 @@ https://quote-keeper-2.netlify.app/all-quote-list
 ---
 
 
-## Test Report 📈
-
-### 📈 🖼️ Screenshot
-  <a href="https://pridebnath.github.io/Quotes-Keeper-2/">
-    <img src = "frontend/src/assets/images/generated-html-report.png" />
-  </a>
-
-### 📈 ↗️ Link
-
-https://pridebnath.github.io/Quotes-Keeper-2/
