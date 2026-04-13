@@ -25,12 +25,16 @@ from here: https://www.python.org/downloads/
 ```
 or if you want to specific about python version
 ```
-  pipenv --python 3.10 shell
+  pipenv --python 3.14 shell
 ```
 
 #### Install packages mentioned in project's requirements.txt file
 ```
   pip install -r requirements.txt
+```
+or no cache
+```
+pip install --no-cache-dir -r requirements.txt
 ```
 
 #### Make sure django installed successfully by checking its version
