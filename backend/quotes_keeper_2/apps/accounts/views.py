@@ -51,6 +51,7 @@ class UserLoginAPIView(APIView):
 class UserAPIView(APIView):
     queryset = CustomUser.objects.all()  # Define an empty queryset
     serializer_class = UserSerializer
+    authentication_classes = [] # removes 401 on sign-in and sign-up
     permission_classes = [AllowAny]
 
     def post(self, request):
